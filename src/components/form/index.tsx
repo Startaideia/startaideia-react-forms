@@ -2,12 +2,13 @@ import React from "react"
 import { FormProvider } from "providers"
 
 interface Props {
+  inititalValue: any
   [x: string]: any
 }
 
-function Form({ children }: Props) {
+function Form({ initialValue, children }: Props) {
   return (
-    <FormProvider>
+    <FormProvider initialValue={initialValue}>
       <form>{children}</form>
     </FormProvider>
   )

@@ -1,5 +1,6 @@
 import React from "react"
 import { useField } from "hooks"
+import { Input } from "styles"
 
 interface Props {
   name: string
@@ -13,7 +14,7 @@ function Text({ name, ...props }: Props) {
     handleChange(event.target.value)
   }
 
-  return <input onChange={onChange} value={getValue()} {...props} />
+  return <Input onChange={onChange} value={getValue()} {...props} />
 }
 
 export default Text

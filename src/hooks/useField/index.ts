@@ -14,7 +14,7 @@ export default function (name: string) {
   }
 
   useEffect(() => {
-    setState({ ..._.set({ ...state }, `currentValue.${name}`, "") })
+    setState({ ..._.set({ ...state }, `currentValue.${name}`, getValue()) })
   }, [name])
 
   return {
