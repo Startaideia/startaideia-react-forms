@@ -1,7 +1,12 @@
 import React from "react"
+import { Form } from "@startaideia/react-forms"
 
 const App = () => {
-  return <h1>it works</h1>
+  return (
+    <Form>
+      <h1>it works</h1>
+    </Form>
+  )
 }
 
 export default App

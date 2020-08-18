@@ -1,8 +1,8 @@
 import React from "react"
-import { IFormContext } from "./context.interface"
+import { IFormContext, IFormState } from "./context.interface"
 
-const INITAL_VALUE: IFormContext = {
+export const INITAL_VALUE: IFormContext = {
   currentValue: {},
 }
 
-export default React.createContext<IFormContext>(INITAL_VALUE)
+export default React.createContext<IFormState>({} as any)
