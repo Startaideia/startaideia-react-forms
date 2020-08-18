@@ -1,1 +1,1 @@
-export { Form } from "components"
+export { Form, Input } from "components"
