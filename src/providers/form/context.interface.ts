@@ -1,5 +1,6 @@
 export interface IFormContext {
-  currentValue: { [x: string]: any }
+  initialValue?: { [x: string]: any }
+  currentValue?: { [x: string]: any }
 }
 
 export interface IFormState {

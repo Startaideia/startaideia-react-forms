@@ -8,13 +8,16 @@ interface Props {
 }
 
 function Text({ name, ...props }: Props) {
-  const { handleChange, getValue } = useField(name)
+  const { onChange, getValue } = useField(name)
 
-  function onChange(event: any) {
-    handleChange(event.target.value)
-  }
-
-  return <Input onChange={onChange} value={getValue()} {...props} />
+  return (
+    <Input
+      name={name}
+      onChange={(e) => onChange(e.target.value)}
+      value={getValue()}
+      {...props}
+    />
+  )
 }
 
 export default Text

@@ -6,10 +6,15 @@ const initialValue = {
 }
 
 const App = () => {
+  function onSubmit(data: any) {
+    console.log(data)
+  }
   return (
-    <Form initialValue={initialValue}>
+    <Form onSubmit={onSubmit} initialValue={initialValue}>
       <h1>it works</h1>
-      <Input.Text name="email" />
+      <Input.Text name="user.email" />
+      <Input.Text name="user.password" />
+      <button type="submit">Entrar</button>
     </Form>
   )
 }

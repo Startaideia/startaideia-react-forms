@@ -2,23 +2,32 @@ import { useContext, useEffect } from "react"
 import { FormContext } from "providers"
 import _ from "lodash"
 
-export default function (name: string) {
-  const { state, setState } = useContext(FormContext)
+interface IField {
+  onChange: (value: any) => void
+  getValue: () => any
+}
 
-  function handleChange(value: any) {
-    setState({ ..._.set({ ...state }, `currentValue.${name}`, value) })
+export default function (name: string): IField {
+  const { state, setState } = useContext(FormContext)
+  const innerState = { ...state }
+
+  function onChange(value: any) {
+    setState(_.set(innerState, `currentValue.${name}`, value))
   }
 
-  function getValue() {
-    return _.get({ ...state }, `currentValue.${name}`, "")
+  function getValue(): any {
+    const defaultValue = _.get(innerState, `initialValue.${name}`, "")
+    return _.get(innerState, `currentValue.${name}`, defaultValue)
   }
 
   useEffect(() => {
-    setState({ ..._.set({ ...state }, `currentValue.${name}`, getValue()) })
+    setState({
+      ..._.set(innerState, `currentValue.${name}`, getValue()),
+    })
   }, [name])
 
   return {
-    handleChange,
+    onChange,
     getValue,
   }
 }

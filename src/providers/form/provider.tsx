@@ -9,7 +9,8 @@ interface Props {
 
 function FormProvider({ initialValue = {}, children }: Props) {
   const [state, setState] = useState<IFormContext>({
-    currentValue: initialValue || INITAL_VALUE.currentValue,
+    initialValue,
+    ...INITAL_VALUE,
   })
 
   return (
