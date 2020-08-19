@@ -26,24 +26,18 @@ function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
       value = Mask.apply(value.replace(/[^\d\p{L}]/g, ""), props.mask)
     }
     onChange(value)
-
-    if (touched) {
-      setErrors(validate())
-    }
+    setErrors(validate())
   }
 
   function handleBlur() {
     setTouched(true)
-    if (!touched) {
-      setErrors(validate())
-    }
   }
 
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
-      <Field invalid={!!errors} valid={touched && !errors}>
+      <Field invalid={touched && !!errors} valid={touched && !errors}>
         {label && (
-          <Label invalid={!!errors} valid={touched && !errors}>
+          <Label invalid={touched && !!errors} valid={touched && !errors}>
             {label}
           </Label>
         )}
@@ -52,13 +46,11 @@ function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
           onChange={handleChange}
           onBlur={handleBlur}
           value={getValue()}
-          invalid={!!errors}
+          invalid={touched && !!errors}
           valid={touched && !errors}
           {...props}
         />
-        {errors?.map((error, key) => (
-          <p key={key}>{error}</p>
-        ))}
+        {touched && errors?.map((error, key) => <p key={key}>{error}</p>)}
       </Field>
     </Col>
   )

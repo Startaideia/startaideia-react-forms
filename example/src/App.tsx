@@ -1,6 +1,5 @@
 import React from "react"
 import { Form, Input, Button } from "@startaideia/react-forms"
-import { ThemeProvider } from "styled-components"
 
 const initialValue = {
   email: "email@email.com",
@@ -8,19 +7,22 @@ const initialValue = {
 
 const App = () => {
   function onSubmit(data: any) {
-    console.log(data)
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log(data)
+        resolve()
+      }, 1000)
+    })
   }
   return (
-    <ThemeProvider theme={{}}>
-      <Form onSubmit={onSubmit} initialValue={initialValue}>
-        <Input.CPF md={6} />
-        <Input.Email md={6} />
-        <Input.Password />
-        <Form.Footer>
-          <Button type="submit">Entrar</Button>
-        </Form.Footer>
-      </Form>
-    </ThemeProvider>
+    <Form onSubmit={onSubmit} initialValue={initialValue}>
+      <Input.CPF name="user.cpf" md={6} isRequired />
+      <Input.Email md={6} />
+      <Input.Password />
+      <Form.Footer>
+        <Button.Submit text="Entrar" />
+      </Form.Footer>
+    </Form>
   )
 }
 

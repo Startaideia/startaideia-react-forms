@@ -5,19 +5,23 @@ import { Container, Row, Col } from "react-grid-system"
 
 interface Props {
   inititalValue?: any
-  onSubmit?: (data: any) => void
+  onSubmit?: (data: any) => void | Promise<void>
   [x: string]: any
 }
 
 function FormInner({ onSubmit, children }: Props) {
-  const { state } = useContext(FormContext)
+  const { state, setState } = useContext(FormContext)
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault()
+
+    setState({ ...state, isLoading: true })
 
     if (!onSubmit) return
 
-    onSubmit({ ...state.currentValue })
+    await onSubmit({ ...state.currentValue })
+
+    setState({ ...state, isLoading: false })
   }
 
   return (

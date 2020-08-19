@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
+import { validationService } from "services"
 import { FormContext } from "providers"
 import _ from "lodash"
-import { validationService } from "services"
 
 interface IField {
   onChange: (value: any) => void
@@ -28,7 +28,17 @@ export default function (name: string, rules = {}): IField {
   }
 
   function validate(): String[] | null {
-    return validationService.validate(name, getValue(), rules)
+    const isValid = validationService.validate(name, getValue(), rules)
+    setState((oldState) => {
+      return {
+        ...oldState,
+        validationState: {
+          ...oldState.validationState,
+          [name]: !isValid,
+        },
+      }
+    })
+    return isValid
   }
 
   useEffect(() => {
@@ -40,6 +50,7 @@ export default function (name: string, rules = {}): IField {
         fields,
       }
     })
+    validate()
   }, [name, rules])
 
   return {

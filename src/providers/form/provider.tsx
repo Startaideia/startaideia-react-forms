@@ -13,8 +13,15 @@ function FormProvider({ initialValue = {}, children }: Props) {
     ...INITAL_VALUE,
   })
 
+  function isValid(): boolean {
+    for (const key in state.validationState) {
+      if (!state.validationState[key]) return false
+    }
+    return true
+  }
+
   return (
-    <FormContext.Provider value={{ state, setState }}>
+    <FormContext.Provider value={{ isValid, state, setState }}>
       {children}
     </FormContext.Provider>
   )
