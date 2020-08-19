@@ -13,7 +13,12 @@ const App = () => {
     <Form onSubmit={onSubmit} initialValue={initialValue}>
       <h1>it works</h1>
       <Input.Email isEmail isRequired />
-      <Input.Text label="Senha" name="user.password" isRequired />
+      <Input.Text
+        label="Senha"
+        isLength={{ max: 16 }}
+        name="user.password"
+        isRequired
+      />
       <button type="submit">Entrar</button>
     </Form>
   )
