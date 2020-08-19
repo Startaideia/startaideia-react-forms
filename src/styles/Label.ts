@@ -16,6 +16,8 @@ const Label: any = styled.label`
   margin-bottom: 5px;
   display: block;
   color: ${getColor};
+  font-family: "Roboto", sans- serif;
+  font-weight: bold;
 `
 
 export default Label

@@ -1,5 +1,5 @@
 import React from "react"
-import { Form, Input } from "@startaideia/react-forms"
+import { Form, Input, Button } from "@startaideia/react-forms"
 import { ThemeProvider } from "styled-components"
 
 const initialValue = {
@@ -17,7 +17,7 @@ const App = () => {
         <Input.Email md={6} />
         <Input.Password />
         <Form.Footer>
-          <button type="submit">Entrar</button>
+          <Button type="submit">Entrar</Button>
         </Form.Footer>
       </Form>
     </ThemeProvider>
