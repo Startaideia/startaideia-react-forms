@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useField } from "hooks"
 import { Input, Field, Label } from "styles"
 import * as availableRules from "rules"
+import Mask from "string-mask"
 import _ from "lodash"
 
 interface Props {
@@ -16,10 +17,15 @@ function Text({ name, label, ...rest }: Props) {
   const [errors, setErrors] = useState<String[] | null>([])
   const [touched, setTouched] = useState(false)
 
-  const props = _.omit(rest, _.keys(availableRules))
+  const props: { [x: string]: any } = _.omit(rest, _.keys(availableRules))
 
   function handleChange(e: any) {
-    onChange(e.target.value)
+    let value = e.target.value
+    if (props.mask) {
+      value = Mask.apply(value.replace(/[^\d\p{L}]/g, ""), props.mask)
+    }
+    onChange(value)
+
     if (touched) {
       setErrors(validate())
     }
