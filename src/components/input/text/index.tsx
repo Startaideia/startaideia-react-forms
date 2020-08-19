@@ -15,7 +15,7 @@ interface Props {
 function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const { onChange, getValue, validate } = useField(name, rules)
-  const [errors, setErrors] = useState<String[] | null>([])
+  const [errors, setErrors] = useState<String[] | null>(null)
   const [touched, setTouched] = useState(false)
 
   const props: { [x: string]: any } = _.omit(rest, _.keys(availableRules))
@@ -41,13 +41,19 @@ function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
 
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
-      <Field>
-        {label && <Label>{label}</Label>}
+      <Field invalid={!!errors} valid={touched && !errors}>
+        {label && (
+          <Label invalid={!!errors} valid={touched && !errors}>
+            {label}
+          </Label>
+        )}
         <Input
           name={name}
           onChange={handleChange}
           onBlur={handleBlur}
           value={getValue()}
+          invalid={!!errors}
+          valid={touched && !errors}
           {...props}
         />
         {errors?.map((error, key) => (
