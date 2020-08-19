@@ -37,6 +37,7 @@
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
     "@types/styled-components": "^5.1.2",
+    "@types/validator": "^13.1.0",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
@@ -64,6 +65,7 @@
     "dist"
   ],
   "dependencies": {
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "validator": "^13.1.1"
   }
 }

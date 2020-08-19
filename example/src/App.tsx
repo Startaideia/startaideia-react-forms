@@ -12,8 +12,8 @@ const App = () => {
   return (
     <Form onSubmit={onSubmit} initialValue={initialValue}>
       <h1>it works</h1>
-      <Input.Email />
-      <Input.Text label="Senha" name="password" />
+      <Input.Email isEmail isRequired />
+      <Input.Text label="Senha" name="user.password" isRequired />
       <button type="submit">Entrar</button>
     </Form>
   )
