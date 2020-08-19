@@ -12,6 +12,8 @@ export function validate(
   const errors: String[] = []
 
   for (const rule in rules) {
+    if (!rules[rule]) continue
+
     const result = availableRules[rule]({ name, value, params: rules[rule] })
     if (result) {
       errors.push(result)

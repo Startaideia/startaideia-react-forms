@@ -1,7 +1,9 @@
-import Text from "./text"
+import Password from "./password"
 import Email from "./email"
+import Text from "./text"
 
 export default {
-  Text,
+  Password,
   Email,
+  Text,
 }

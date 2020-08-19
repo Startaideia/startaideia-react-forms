@@ -5,6 +5,8 @@ import { Rule } from "rules"
 export default function ({ value, params }: Rule): String | null {
   const str = trim(String(value))
 
+  if (str.length === 0) return null
+
   if (!isLength(str, params)) {
     const { min, max }: any = params
     if (min && max) {
