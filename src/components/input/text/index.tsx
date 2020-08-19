@@ -4,6 +4,7 @@ import { Input, Field, Label } from "styles"
 import * as availableRules from "rules"
 import Mask from "string-mask"
 import _ from "lodash"
+import { Col } from "react-grid-system"
 
 interface Props {
   name: string
@@ -11,7 +12,7 @@ interface Props {
   [x: string]: any
 }
 
-function Text({ name, label, ...rest }: Props) {
+function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const { onChange, getValue, validate } = useField(name, rules)
   const [errors, setErrors] = useState<String[] | null>([])
@@ -39,19 +40,21 @@ function Text({ name, label, ...rest }: Props) {
   }
 
   return (
-    <Field>
-      {label && <Label>{label}</Label>}
-      <Input
-        name={name}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        value={getValue()}
-        {...props}
-      />
-      {errors?.map((error, key) => (
-        <p key={key}>{error}</p>
-      ))}
-    </Field>
+    <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
+      <Field>
+        {label && <Label>{label}</Label>}
+        <Input
+          name={name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={getValue()}
+          {...props}
+        />
+        {errors?.map((error, key) => (
+          <p key={key}>{error}</p>
+        ))}
+      </Field>
+    </Col>
   )
 }
 

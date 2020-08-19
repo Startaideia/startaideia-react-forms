@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { FormProvider, FormContext } from "providers"
 import { Form as StyledForm } from "styles"
+import { Container, Row, Col } from "react-grid-system"
 
 interface Props {
   inititalValue?: any
@@ -19,7 +20,13 @@ function FormInner({ onSubmit, children }: Props) {
     onSubmit({ ...state.currentValue })
   }
 
-  return <StyledForm onSubmit={handleSubmit}>{children}</StyledForm>
+  return (
+    <StyledForm onSubmit={handleSubmit}>
+      <Container>
+        <Row>{children}</Row>
+      </Container>
+    </StyledForm>
+  )
 }
 
 function Form({ initialValue, children, ...props }: Props) {
@@ -28,6 +35,10 @@ function Form({ initialValue, children, ...props }: Props) {
       <FormInner {...props}>{children}</FormInner>
     </FormProvider>
   )
+}
+
+Form.Footer = function ({ xs = 12, children }: Props) {
+  return <Col xs={xs}>{children}</Col>
 }
 
 export default Form
