@@ -1,3 +1,4 @@
 import * as validationService from "./validation"
+import * as phoneService from "./phone"
 
-export { validationService }
+export { phoneService, validationService }

@@ -30,7 +30,18 @@ function parseClassName({ errors, touched, focus }: any): string {
   return className.join(" ")
 }
 
-function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
+function Text({
+  name,
+  label,
+  mask,
+  xs = 12,
+  sm,
+  md,
+  lg,
+  xl,
+  xxl,
+  ...rest
+}: Props) {
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const { onChange, getValue, validate } = useField(name, rules)
   const [errors, setErrors] = useState<String[] | null>(null)
@@ -42,8 +53,12 @@ function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
 
   function handleChange(e: any) {
     let value = e.target.value
-    if (props.mask) {
-      value = Mask.apply(value.replace(/[^\d\p{L}]/g, ""), props.mask)
+    if (mask) {
+      const unmaskedValue = value.replace(/[^\d\p{L}]/g, "")
+      if (typeof mask === "string") {
+        value = Mask.apply(unmaskedValue, mask)
+      }
+      value = mask(unmaskedValue)
     }
     onChange(value)
     setErrors(validate())

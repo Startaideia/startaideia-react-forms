@@ -18,6 +18,32 @@ const App = () => {
     <Form onSubmit={onSubmit} initialValue={initialValue}>
       <Input.CPF name="user.cpf" md={6} />
       <Input.Email md={6} disabled />
+      <Input.Phone label="Telefone Fixo" md={6} name="phone" mobile={false} />
+      <Input.Phone
+        label="Telefone Fixo + País"
+        name="phone_country"
+        country
+        md={6}
+        mobile={false}
+      />
+
+      <Input.Phone label="Celular" md={6} name="mobile" phone={false} />
+      <Input.Phone
+        label="Celular + País"
+        name="mobile_country"
+        country
+        md={6}
+        phone={false}
+      />
+
+      <Input.Phone label="Celular ou Telefone" name="phone_complete" md={6} />
+      <Input.Phone
+        label="Celular ou Telefone + Paìs"
+        name="phone_complete_contry"
+        md={6}
+        country
+      />
+
       <Input.Password isRequired={false} />
       <Form.Footer>
         <Button.Submit text="Entrar" />

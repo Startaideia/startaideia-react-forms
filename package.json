@@ -66,6 +66,7 @@
     "dist"
   ],
   "dependencies": {
+    "libphonenumber-js": "^1.7.57",
     "lodash": "^4.17.20",
     "react-grid-system": "^7.0.3",
     "string-mask": "^0.3.0",
