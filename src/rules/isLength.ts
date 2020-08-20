@@ -7,7 +7,7 @@ export default function ({ value, params }: Rule): String | null {
 
   if (str.length === 0) return null
 
-  if (!isLength(str, params)) {
+  if (!isLength(str, params as any)) {
     const { min, max }: any = params
     if (min && max) {
       return `O campo precisa ter entre ${min} e ${max} caracteres`

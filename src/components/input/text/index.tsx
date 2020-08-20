@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useField } from "hooks"
-import { Input, Field, Label } from "styles"
+import { Message, Input, Field, Label } from "styles"
 import * as availableRules from "rules"
 import Mask from "string-mask"
 import _ from "lodash"
@@ -31,26 +31,42 @@ function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
 
   function handleBlur() {
     setTouched(true)
+    if (!touched) {
+      setErrors(validate())
+    }
+  }
+
+  function isInvalid(): boolean {
+    return touched && !!errors
+  }
+
+  function isValid(): boolean {
+    return touched && !errors
+  }
+
+  const validProps = {
+    valid: isValid(),
+    invalid: isInvalid(),
   }
 
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
-      <Field invalid={touched && !!errors} valid={touched && !errors}>
-        {label && (
-          <Label invalid={touched && !!errors} valid={touched && !errors}>
-            {label}
-          </Label>
-        )}
+      <Field {...validProps}>
+        {label && <Label {...validProps}>{label}</Label>}
         <Input
           name={name}
           onChange={handleChange}
           onBlur={handleBlur}
           value={getValue()}
-          invalid={touched && !!errors}
-          valid={touched && !errors}
+          {...validProps}
           {...props}
         />
-        {touched && errors?.map((error, key) => <p key={key}>{error}</p>)}
+        {touched &&
+          errors?.map((error, key) => (
+            <Message {...validProps} key={key}>
+              {error}
+            </Message>
+          ))}
       </Field>
     </Col>
   )

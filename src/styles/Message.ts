@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { get, getColor } from "theme"
 
-const Label: any = styled.label`
-  margin-bottom: 5px;
+const Message: any = styled.p`
+  margin: 5px 0;
   display: block;
   color: ${getColor};
   font-family: ${get("fonts.body")};
-  font-weight: bold;
-  font-size: ${get("fontSize.sm")};
+  padding: 0;
+  font-size: ${get("fontSize.xs")};
 `
 
-export default Label
+export default Message

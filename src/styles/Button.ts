@@ -1,7 +1,8 @@
 import styled from "styled-components"
+import { get } from "theme"
 
 const Button: any = styled.button`
-  font-family: "Roboto", sans-serif;
+  font-family: ${get("fonts.body")};
   border: 1px solid #ccc;
   background: #e6e6e6;
   outline: none;
