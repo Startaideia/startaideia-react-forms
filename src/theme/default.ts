@@ -24,4 +24,10 @@ export default {
   },
 
   // border
+  // components
+  components: {
+    input: `
+      border-width: 0px 0px 1px 0px;
+    `,
+  },
 }

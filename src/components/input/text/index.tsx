@@ -12,13 +12,33 @@ interface Props {
   [x: string]: any
 }
 
+function parseClassName({ errors, touched, focus }: any): string {
+  const className = []
+
+  if (focus) {
+    className.push("has-focus")
+  }
+
+  if (touched && !!errors) {
+    className.push("is-invalid")
+  }
+
+  if (touched && !errors) {
+    className.push("is-valid")
+  }
+
+  return className.join(" ")
+}
+
 function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const { onChange, getValue, validate } = useField(name, rules)
   const [errors, setErrors] = useState<String[] | null>(null)
+  const [focus, setFocus] = useState<boolean>(false)
   const [touched, setTouched] = useState(false)
 
   const props: { [x: string]: any } = _.omit(rest, _.keys(availableRules))
+  const className = parseClassName({ errors, touched, focus })
 
   function handleChange(e: any) {
     let value = e.target.value
@@ -31,39 +51,28 @@ function Text({ name, label, xs = 12, sm, md, lg, xl, xxl, ...rest }: Props) {
 
   function handleBlur() {
     setTouched(true)
+    setFocus(false)
     if (!touched) {
       setErrors(validate())
     }
   }
 
-  function isInvalid(): boolean {
-    return touched && !!errors
-  }
-
-  function isValid(): boolean {
-    return touched && !errors
-  }
-
-  const validProps = {
-    valid: isValid(),
-    invalid: isInvalid(),
-  }
-
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
-      <Field {...validProps}>
-        {label && <Label {...validProps}>{label}</Label>}
+      <Field className={className}>
+        {label && <Label className={className}>{label}</Label>}
         <Input
           name={name}
           onChange={handleChange}
           onBlur={handleBlur}
+          onFocus={() => setFocus(true)}
           value={getValue()}
-          {...validProps}
+          className={className}
           {...props}
         />
         {touched &&
           errors?.map((error, key) => (
-            <Message {...validProps} key={key}>
+            <Message className={className} key={key}>
               {error}
             </Message>
           ))}
