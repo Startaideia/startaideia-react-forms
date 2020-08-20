@@ -2,11 +2,11 @@ export default {
   // colors
   colors: {
     transparent: "transparent",
-    valid: "green",
-    invalid: "red",
-    black: "#000",
+    valid: "#48BB78",
+    invalid: "#F56565",
+    black: "#2D3748",
     white: "#fff",
-    primary: "#4669fa",
+    primary: "#3f51b5",
   },
 
   // fonts

@@ -16,9 +16,9 @@ const App = () => {
   }
   return (
     <Form onSubmit={onSubmit} initialValue={initialValue}>
-      <Input.CPF name="user.cpf" md={6} isRequired />
-      <Input.Email md={6} />
-      <Input.Password />
+      <Input.CPF name="user.cpf" md={6} />
+      <Input.Email md={6} disabled />
+      <Input.Password isRequired={false} />
       <Form.Footer>
         <Button.Submit text="Entrar" />
       </Form.Footer>
