@@ -1,6 +1,6 @@
-import React from "react"
+import * as phoneService from "services/phone"
 import Text from "../text"
-import { phoneService } from "services"
+import React from "react"
 
 interface Props {
   [x: string]: any

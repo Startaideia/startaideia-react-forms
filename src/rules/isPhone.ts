@@ -1,4 +1,4 @@
-import { phoneService } from "services"
+import * as phoneService from "services/phone"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
 import trim from "validator/lib/trim"
 import { Rule } from "./index"
