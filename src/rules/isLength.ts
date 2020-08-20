@@ -4,8 +4,15 @@ import { Rule } from "rules"
 
 export default function ({ value, params }: Rule): String | null {
   const str = trim(String(value))
+  const { exact } = params
 
   if (str.length === 0) return null
+
+  if (exact && str.length === exact) {
+    return null
+  } else if (exact && str.length !== exact) {
+    return `O campo precisa ter ${exact} caracteres`
+  }
 
   if (!isLength(str, params as any)) {
     const { min, max }: any = params

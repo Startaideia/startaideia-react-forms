@@ -57,8 +57,9 @@ function Text({
       const unmaskedValue = value.replace(/[^\d\p{L}]/g, "")
       if (typeof mask === "string") {
         value = Mask.apply(unmaskedValue, mask)
+      } else {
+        value = mask(unmaskedValue)
       }
-      value = mask(unmaskedValue)
     }
     onChange(value)
     setErrors(validate())

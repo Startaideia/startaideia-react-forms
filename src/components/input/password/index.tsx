@@ -13,6 +13,7 @@ function Password({ ...props }: Props) {
       name="password"
       type="password"
       label="Senha"
+      maxLength={16}
       {...props}
     />
   )

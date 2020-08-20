@@ -45,6 +45,9 @@ const App = () => {
       />
 
       <Input.Password isRequired={false} />
+
+      <Input.CEP />
+
       <Form.Footer>
         <Button.Submit text="Entrar" />
       </Form.Footer>

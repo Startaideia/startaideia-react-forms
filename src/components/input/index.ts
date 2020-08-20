@@ -3,6 +3,7 @@ import Phone from "./phone"
 import Email from "./email"
 import Text from "./text"
 import CPF from "./cpf"
+import CEP from "./cep"
 
 export default {
   Password,
@@ -10,4 +11,5 @@ export default {
   Phone,
   Text,
   CPF,
+  CEP,
 }
