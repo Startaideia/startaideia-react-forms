@@ -61,6 +61,12 @@ const App = () => {
 
       <Input.Select label="Sexo" name="gender" source={dataSet} isRequired />
 
+      <Input.Checkbox
+        name="remember_me"
+        text="Mantenha-me conectado"
+        isRequired
+      />
+
       <Form.Footer>
         <Button.Submit text="Entrar" />
       </Form.Footer>
