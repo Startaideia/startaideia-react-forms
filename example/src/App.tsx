@@ -1,11 +1,6 @@
 import React from "react"
 import { Form, Input, Button } from "@startaideia/react-forms"
 
-const initialValue = {
-  email: "email@email.com",
-  gender: "F",
-}
-
 const dataSet = [
   {
     value: "M",
@@ -27,9 +22,9 @@ const App = () => {
     })
   }
   return (
-    <Form onSubmit={onSubmit} initialValue={initialValue}>
+    <Form onSubmit={onSubmit}>
       <Input.CPF name="user.cpf" md={6} />
-      <Input.Email md={6} disabled />
+      <Input.Email md={6} />
       <Input.Phone label="Telefone Fixo" md={6} name="phone" mobile={false} />
       <Input.Phone
         label="Telefone Fixo + País"
