@@ -56,17 +56,10 @@ const App = () => {
         country
       />
 
-      <Input.Password xs={12} isRequired={false} />
+      <Input.Password />
+      <Input.CEP />
 
-      <Input.CEP xs={12} />
-
-      <Input.Select
-        xs={12}
-        label="Sexo"
-        name="gender"
-        source={dataSet}
-        isRequired
-      />
+      <Input.Select label="Sexo" name="gender" source={dataSet} isRequired />
 
       <Form.Footer>
         <Button.Submit text="Entrar" />

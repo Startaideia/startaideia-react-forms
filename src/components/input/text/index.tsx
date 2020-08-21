@@ -48,7 +48,7 @@ function Text({ name, label, mask, ...rest }: Props) {
   }
 
   return (
-    <Col {...sizes}>
+    <Col xs={12} {...sizes}>
       <Field className={className}>
         {label && <Label className={className}>{label}</Label>}
         <Input
