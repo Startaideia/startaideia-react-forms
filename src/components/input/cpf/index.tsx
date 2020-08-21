@@ -5,6 +5,12 @@ interface Props {
   [x: string]: any
 }
 
+/**
+ * CPF default field
+ *
+ * @param {Props} { ...props }
+ * @returns
+ */
 function CPF({ ...props }: Props) {
   return (
     <Text

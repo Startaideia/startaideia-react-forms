@@ -17,7 +17,12 @@ interface Props {
   source: DataItem[]
   [x: string]: any
 }
-
+/**
+ * Select Input Component
+ *
+ * @param {Props} { name, label, source, ...rest }
+ * @returns
+ */
 function Select({ name, label, source, ...rest }: Props) {
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
@@ -29,14 +34,14 @@ function Select({ name, label, source, ...rest }: Props) {
   const [touched, setTouched] = useState(false)
 
   const [focus, setFocus] = useState<boolean>(false)
-  const className: string = utilService.parseClassName({
-    focus,
-    touched,
-    errors,
-  })
+  const className = utilService.parseClassName({ focus, touched, errors })
 
   const { onChange, validate, value } = useField(name, rules)
 
+  /**
+   * Handle dataSource changes after first render
+   *
+   */
   useEffect(() => {
     if (!_.isEqual(dataSource, source)) {
       setDataSource(source)
@@ -46,6 +51,10 @@ function Select({ name, label, source, ...rest }: Props) {
     setDataSource(source)
   }, [source])
 
+  /**
+   * Handle values changes after first render
+   *
+   */
   useEffect(() => {
     if (!value) return
 
@@ -56,6 +65,10 @@ function Select({ name, label, source, ...rest }: Props) {
     }
   }, [value])
 
+  /**
+   * Handle item selection
+   *
+   */
   function handleItemSelection(item: DataItem, isTouched: boolean) {
     return function () {
       if (item.value === selectedItem?.value) return
@@ -68,6 +81,10 @@ function Select({ name, label, source, ...rest }: Props) {
     }
   }
 
+  /**
+   * Handle clear selection
+   *
+   */
   function handleClearSelection() {
     setSelectedItem(null)
     onChange(null)
@@ -75,10 +92,18 @@ function Select({ name, label, source, ...rest }: Props) {
     setTouched(true)
   }
 
+  /**
+   * Handle text input changes
+   *
+   */
   function handleInputChange(e: any) {
     setQuerystring(e.target.value)
   }
 
+  /**
+   * Handle input value changes
+   *
+   */
   function getInputValue() {
     if (focus) {
       return querystring
@@ -86,10 +111,18 @@ function Select({ name, label, source, ...rest }: Props) {
     return selectedItem?.label || ""
   }
 
+  /**
+   * Handle input focus
+   *
+   */
   function handleFocus() {
     setFocus(true)
   }
 
+  /**
+   * Handle search input blur
+   *
+   */
   function handleBlur() {
     setFocus(false)
   }

@@ -6,6 +6,10 @@ interface Props {
   [x: string]: any
 }
 
+/**
+ * Default submit button
+ *
+ */
 function Submit({ text, ...props }: Props) {
   const {
     isValid,

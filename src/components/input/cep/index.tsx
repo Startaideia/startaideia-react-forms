@@ -5,6 +5,10 @@ interface Props {
   [x: string]: any
 }
 
+/**
+ * CEP default field
+ *
+ */
 function CEP({ ...props }: Props) {
   return (
     <Text

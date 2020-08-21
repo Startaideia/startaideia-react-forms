@@ -13,6 +13,12 @@ interface Props {
   [x: string]: any
 }
 
+/**
+ * Default text form input
+ *
+ * @param {Props} { name, label, mask, ...rest }
+ * @returns
+ */
 function Text({ name, label, mask, ...rest }: Props) {
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
@@ -25,6 +31,12 @@ function Text({ name, label, mask, ...rest }: Props) {
   const props: { [x: string]: any } = _.omit(rest, _.keys(availableRules))
   const className = utilService.parseClassName({ errors, touched, focus })
 
+  /**
+   * Handle input change, adding it values to form context,
+   * applying masks and running validations
+   *
+   * @param {*} e
+   */
   function handleChange(e: any) {
     let value = e.target.value
     if (mask) {
@@ -39,6 +51,11 @@ function Text({ name, label, mask, ...rest }: Props) {
     setErrors(validate())
   }
 
+  /**
+   * Handle input bluer, it applies focus e touched state values
+   * and run validations
+   *
+   */
   function handleBlur() {
     setTouched(true)
     setFocus(false)

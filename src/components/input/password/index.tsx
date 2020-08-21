@@ -5,6 +5,12 @@ interface Props {
   [x: string]: any
 }
 
+/**
+ * Password default field
+ *
+ * @param {Props} { ...props }
+ * @returns
+ */
 function Password({ ...props }: Props) {
   return (
     <Text
