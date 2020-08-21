@@ -3,7 +3,19 @@ import { Form, Input, Button } from "@startaideia/react-forms"
 
 const initialValue = {
   email: "email@email.com",
+  gender: "F",
 }
+
+const dataSet = [
+  {
+    value: "M",
+    label: "Masculino",
+  },
+  {
+    value: "F",
+    label: "Feminino",
+  },
+]
 
 const App = () => {
   function onSubmit(data: any) {
@@ -44,9 +56,17 @@ const App = () => {
         country
       />
 
-      <Input.Password isRequired={false} />
+      <Input.Password xs={12} isRequired={false} />
 
-      <Input.CEP />
+      <Input.CEP xs={12} />
+
+      <Input.Select
+        xs={12}
+        label="Sexo"
+        name="gender"
+        source={dataSet}
+        isRequired
+      />
 
       <Form.Footer>
         <Button.Submit text="Entrar" />

@@ -8,6 +8,7 @@ interface IField {
   getValue: () => any
   getRules: () => { [x: string]: any }
   validate: () => String[] | null
+  value: any
 }
 
 export default function (name: string, rules = {}): IField {
@@ -58,5 +59,6 @@ export default function (name: string, rules = {}): IField {
     getValue,
     getRules,
     validate,
+    value: getValue(),
   }
 }
