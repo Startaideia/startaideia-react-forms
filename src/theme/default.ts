@@ -27,8 +27,7 @@ export default {
   // components
   components: {
     input: `
-      border-width: 1px 1px 1px 1px;
-      border-radius: 5px;
+      border-width: 0px 0px 1px 0px;
     `,
   },
 }

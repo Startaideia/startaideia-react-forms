@@ -139,7 +139,7 @@ function Select({ name, label, source, ...rest }: Props) {
           className={className}
         />
         {selectedItem && (
-          <div className="std__append_right">
+          <div className="icon-container has-after-icon">
             <IoMdCloseCircle onClick={handleClearSelection} />
           </div>
         )}
