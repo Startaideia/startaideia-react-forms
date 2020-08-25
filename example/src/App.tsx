@@ -1,5 +1,6 @@
 import React from "react"
 import { Form, Input, Button } from "@startaideia/react-forms"
+import { AiFillPhone } from "react-icons/ai"
 
 const dataSet = [
   {
@@ -24,9 +25,19 @@ const App = () => {
   return (
     <Form onSubmit={onSubmit}>
       <Input.CPF name="user.cpf" md={6} />
+
       <Input.Email md={6} />
-      <Input.Phone label="Telefone Fixo" md={6} name="phone" mobile={false} />
+
       <Input.Phone
+        beforeIcon={<AiFillPhone />}
+        label="Telefone Fixo"
+        md={6}
+        name="phone"
+        mobile={false}
+      />
+
+      <Input.Phone
+        afterIcon={<AiFillPhone />}
         label="Telefone Fixo + País"
         name="phone_country"
         country

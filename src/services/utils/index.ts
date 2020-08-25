@@ -1,4 +1,10 @@
-export function parseClassName({ errors, touched, focus }: any): string {
+export function parseClassName({
+  beforeIcon,
+  afterIcon,
+  errors,
+  touched,
+  focus,
+}: any): string {
   const className = []
 
   if (focus) {
@@ -11,6 +17,16 @@ export function parseClassName({ errors, touched, focus }: any): string {
 
   if (touched && !errors) {
     className.push("is-valid")
+  }
+
+  if (beforeIcon) {
+    className.push("has-icon")
+    className.push("has-before-icon")
+  }
+
+  if (afterIcon) {
+    className.push("has-icon")
+    className.push("has-after-icon")
   }
 
   return className.join(" ")

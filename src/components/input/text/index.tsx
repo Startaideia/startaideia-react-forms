@@ -19,7 +19,7 @@ interface Props {
  * @param {Props} { name, label, mask, ...rest }
  * @returns
  */
-function Text({ name, label, mask, ...rest }: Props) {
+function Text({ name, label, mask, beforeIcon, afterIcon, ...rest }: Props) {
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
 
@@ -29,7 +29,13 @@ function Text({ name, label, mask, ...rest }: Props) {
   const [touched, setTouched] = useState(false)
 
   const props: { [x: string]: any } = _.omit(rest, _.keys(availableRules))
-  const className = utilService.parseClassName({ errors, touched, focus })
+  const className = utilService.parseClassName({
+    beforeIcon,
+    afterIcon,
+    errors,
+    touched,
+    focus,
+  })
 
   /**
    * Handle input change, adding it values to form context,
@@ -68,6 +74,12 @@ function Text({ name, label, mask, ...rest }: Props) {
     <Col xs={12} {...sizes}>
       <Field className={className}>
         {label && <Label className={className}>{label}</Label>}
+
+        {(beforeIcon || afterIcon) && (
+          <div className={`icon-container ${className}`}>
+            {beforeIcon || afterIcon}
+          </div>
+        )}
         <Input
           name={name}
           onChange={handleChange}
