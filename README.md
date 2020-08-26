@@ -4,27 +4,10 @@
 
 [![NPM](https://img.shields.io/npm/v/@startaideia/react-forms.svg)](https://www.npmjs.com/package/@startaideia/react-forms) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Install
+## Documentation
 
-```bash
-npm install --save @startaideia/react-forms
-```
-
-## Usage
-
-```tsx
-import React, { Component } from 'react'
-
-import MyComponent from '@startaideia/react-forms'
-import '@startaideia/react-forms/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
-```
+View full documentation at [https://startaideia.github.io/startaideia-react-forms](https://startaideia.github.io/startaideia-react-forms/)
 
 ## License
 
-MIT © [gustavo.boas](https://github.com/gustavo.boas)
+MIT © [Startaideia](https://github.com/Startaideia)
