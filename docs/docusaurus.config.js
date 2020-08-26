@@ -1,9 +1,9 @@
 module.exports = {
   title: "Startaideia React Forms",
   tagline: "React library for creating forms in a breeze",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
-  onBrokenLinks: "throw",
+  url: "https://startaideia.github.io",
+  baseUrl: "/startaideia-react-forms/",
+  onBrokenLinks: "ignore",
   favicon: "img/favicon.ico",
   organizationName: "Startaideia", // Usually your GitHub org/user name.
   projectName: "startaideia-react-forms", // Usually your repo name.
@@ -84,7 +84,7 @@ module.exports = {
       {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: "doc1",
+          homePageId: "introduction",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
