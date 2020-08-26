@@ -24,6 +24,9 @@ const App = () => {
   }
   return (
     <Form onSubmit={onSubmit}>
+      <Input.CPFCNPJ />
+      <Input.CNPJ />
+
       <Input.CPF name="user.cpf" md={6} />
 
       <Input.Email md={6} />

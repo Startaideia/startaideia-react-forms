@@ -1,7 +1,7 @@
 import { Rule } from "rules"
 import trim from "validator/lib/trim"
 
-function isValidCPF(cpf: string): boolean {
+export function isValidCPF(cpf: string): boolean {
   if (
     !cpf ||
     cpf.length !== 11 ||
