@@ -70,9 +70,9 @@ Check if it is a valid CPF
 Check if it is a valid CNPJ
 
 ```jsx title="Usage: "
-<Input.Text isisCNPJCPF>
+<Input.Text isCNPJ>
 <Input.Text isCNPJ={true}> // Optional syntax
-<Input.Text isisCNPJCPF={false}> // Disable the rule
+<Input.Text isCNPJ={false}> // Disable the rule
 ```
 
 ## isCPFCNPJ
@@ -82,5 +82,5 @@ Check if it is a valid CPF or CNPJ
 ```jsx title="Usage: "
 <Input.Text isCPFCNPJ>
 <Input.Text isCPFCNPJ={true}> // Optional syntax
-<Input.Text isCisCPFCNPJPF={false}> // Disable the rule
+<Input.Text isCPFCNPJ={false}> // Disable the rule
 ```
