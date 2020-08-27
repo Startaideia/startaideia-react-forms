@@ -16,14 +16,17 @@ const Button: any = styled.button`
 
   &:hover {
     cursor: pointer;
+    ${get("components.button.hover")}
   }
 
   &:active {
     transform: scale(1.05);
+    ${get("components.button.active")}
   }
 
   &:disabled {
     opacity: 0.5;
+    ${get("components.button.disabled")}
   }
 
   ${get("components.button")};

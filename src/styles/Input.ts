@@ -15,20 +15,24 @@ const Input: any = styled.input`
 
   &:focus {
     border-color: ${get("colors.primary")};
+    ${get("components.input.focus")}
   }
 
   &.is-invalid {
     color: ${get("colors.invalid")};
     border-color: ${get("colors.invalid")};
+    ${get("components.input.invalid")}
   }
 
   &.is-valid {
     color: ${get("colors.valid")};
     border-color: ${get("colors.valid")};
+    ${get("components.input.valid")}
   }
 
   &.has-before-icon {
     padding-left: 30px;
+    ${get("components.input.beforeIcon")}
   }
 
   ${get("components.input")}

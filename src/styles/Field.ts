@@ -21,21 +21,29 @@ const Field: any = styled.div`
 
     &:focus {
       border-color: ${get("colors.primary")};
+      ${get("components.field.icon.focus")}
     }
 
     &.is-invalid {
       color: ${get("colors.invalid")};
+      ${get("components.field.icon.invalid")}
     }
 
     &.is-valid {
       color: ${get("colors.valid")};
+      ${get("components.field.icon.valid")}
     }
 
     &.has-before-icon {
       left: 0;
       right: inherit;
+      ${get("components.field.icon.before")}
     }
+
+    ${get("components.field.icon")}
   }
+
+  ${get("components.field")}
 `
 
 export default Field

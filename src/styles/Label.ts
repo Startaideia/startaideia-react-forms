@@ -11,15 +11,20 @@ const Label: any = styled.label`
 
   &.has-focus {
     color: ${get("colors.primary")};
+    ${get("components.label.focus")}
   }
 
   &.is-invalid {
     color: ${get("colors.invalid")};
+    ${get("components.label.invalid")}
   }
 
   &.is-valid {
     color: ${get("colors.valid")};
+    ${get("components.label.valid")}
   }
+
+  ${get("components.label")}
 `
 
 export default Label

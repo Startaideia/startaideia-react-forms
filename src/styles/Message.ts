@@ -11,11 +11,15 @@ const Message: any = styled.p`
 
   &.is-invalid {
     color: ${get("colors.invalid")};
+    ${get("components.message.invalid")}
   }
 
   &.is-valid {
     color: ${get("colors.valid")};
+    ${get("components.message.valid")}
   }
+
+  ${get("components.message")}
 `
 
 export default Message

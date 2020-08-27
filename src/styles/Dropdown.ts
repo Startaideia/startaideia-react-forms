@@ -19,16 +19,19 @@ const Dropdown = styled.ul`
 
   &.has-focus {
     display: block;
+    ${get("components.dropdown.focus")}
   }
 
   li {
     padding: 8px 10px;
     color: ${get("colors.black")};
+    ${get("components.dropdown.li")}
 
     &:hover {
       cursor: pointer;
       background: ${get("colors.primary")};
       color: ${get("colors.white")};
+      ${get("components.dropdown.li.hover")}
     }
   }
 
