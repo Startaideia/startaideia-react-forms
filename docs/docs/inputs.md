@@ -230,3 +230,21 @@ const dataSet = [
   },
 ]}/>
 </Form>
+
+## Date
+
+```jsx
+<Input.Date name="birth_date" label="Aniversário" />
+```
+
+<Form>
+  <Input.Date name="birth_date" label="Aniversário"/>
+</Form>
+
+Default input props
+
+| Prop        | Description              | Value      |
+| ----------- | ------------------------ | ---------- |
+| mask        | the input mask           | ##/##/#### |
+| inputFormat | the format used in value | YYYY/MM/DD |
+| maskFormat  | the mask date format     | DD/MM/YYYY |

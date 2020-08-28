@@ -84,3 +84,21 @@ Check if it is a valid CPF or CNPJ
 <Input.Text isCPFCNPJ={true}> // Optional syntax
 <Input.Text isCPFCNPJ={false}> // Disable the rule
 ```
+
+## isDate
+
+Check if it is a valid date
+
+```jsx title="Usage: "
+  <Input.Text isDate="YYYY/MM/DD"> // Default format is DD/MM/YYYY
+```
+
+## isAge
+
+Used in Date fields, check for min and max ages
+
+```jsx title="Usage: "
+  <Input.Date isAge={{ min: 18 }}>
+  <Input.Date isAge={{ max: 60 }}>
+  <Input.Date isAge={{ min: 18, max: 60 }}>
+```
