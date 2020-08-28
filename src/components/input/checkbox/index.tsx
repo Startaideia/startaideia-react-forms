@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Message, Field, Label } from "styles"
+import GroupContext from "../group/context"
 import { Container, Box } from "./styles"
 import { FaCheck } from "react-icons/fa"
 import { Col } from "react-grid-system"
@@ -14,13 +15,14 @@ import _ from "lodash"
  * @param {*} { name, label, value = "on", text, ...rest }
  * @returns
  */
-function Checkbox({ name, label, value = "on", text, ...rest }: any) {
+function Checkbox({ name: iName, label, value = "on", text, ...rest }: any) {
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const [errors, setErrors] = useState<String[] | null>(null)
   const [touched, setTouched] = useState<boolean>(false)
+  const { name } = useContext(GroupContext)
 
-  const { onChange, getValue, validate } = useField(name, rules)
+  const { onChange, getValue, validate } = useField(name || iName, rules)
   const className = utilService.parseClassName({ errors, touched })
 
   /**

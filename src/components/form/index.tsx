@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { FormProvider, FormContext } from "providers"
 import { Form as StyledForm } from "styles"
 import { Container, Row, Col } from "react-grid-system"
+import _ from "lodash"
 
 interface Props {
   inititalValue?: any
@@ -15,11 +16,18 @@ function FormInner({ onSubmit, children }: Props) {
   async function handleSubmit(e: any) {
     e.preventDefault()
 
-    setState({ ...state, isLoading: true })
-
     if (!onSubmit) return
 
-    await onSubmit({ ...state.currentValue })
+    const { fields } = state
+
+    setState({ ...state, isLoading: true })
+
+    const result = {}
+    _.uniq(fields).forEach(function (field: string) {
+      _.set(result, field, _.get(state.currentValue, field))
+    })
+
+    await onSubmit(result)
 
     setState({ ...state, isLoading: false })
   }
