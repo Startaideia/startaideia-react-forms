@@ -76,7 +76,28 @@ const App = () => {
         isRequired
       />
 
-      <Input.Date name="birth_date" label="Aniversário" isRequired />
+      <Input.Date name="birth_date" label="Aniversário" isRequired sm={3} />
+      <Input.Date
+        name="birth_date_vote"
+        isAge={{ min: 18, max: 60 }}
+        label="Aniversário (entre 18 e 60)"
+        isRequired
+        sm={3}
+      />
+      <Input.Date
+        name="birth_date_vote_2"
+        isAge={{ min: 18 }}
+        label="Aniversário (min 18)"
+        isRequired
+        sm={3}
+      />
+      <Input.Date
+        name="birth_date_vote_3"
+        isAge={{ max: 60 }}
+        label="Aniversário (max 60)"
+        isRequired
+        sm={3}
+      />
 
       <Form.Footer>
         <Button.Submit text="Entrar" />

@@ -6,6 +6,7 @@ export { default as isEqual } from "./isEqual"
 export { default as isEmail } from "./isEmail"
 export { default as isDate } from "./isDate"
 export { default as isCNPJ } from "./isCNPJ"
+export { default as isAge } from "./isAge"
 export { default as isCPF } from "./isCPF"
 
 export interface Rule {

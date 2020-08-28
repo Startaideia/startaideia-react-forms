@@ -36,6 +36,7 @@ function Text({
   const [errors, setErrors] = useState<String[] | null>(null)
   const [focus, setFocus] = useState<boolean>(false)
   const [touched, setTouched] = useState(false)
+  const [error] = errors || []
 
   const props = _.omit(rest, _.keys(availableRules))
 
@@ -100,12 +101,7 @@ function Text({
           {...props}
         />
       </Field>
-      {touched &&
-        errors?.map((error, key) => (
-          <Message className={className} key={key}>
-            {error}
-          </Message>
-        ))}
+      {touched && error && <Message className={className}>{error}</Message>}
     </Col>
   )
 }

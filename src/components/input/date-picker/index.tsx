@@ -8,6 +8,7 @@ function DatePicker({
   mask = "##/##/####",
   inputFormat = "YYYY/MM/DD",
   maskFormat = "DD/MM/YYYY",
+  isAge,
   ...props
 }: any) {
   /**
@@ -45,6 +46,7 @@ function DatePicker({
       transformValue={transformValue}
       onInput={onInput}
       inputmode="numeric"
+      isAge={isAge ? { ...isAge, format: inputFormat } : false}
       {...props}
     />
   )
