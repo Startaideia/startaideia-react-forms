@@ -1,6 +1,7 @@
 import Password from "./password"
 import Checkbox from "./checkbox"
-import CPFCNPJ from "./cpf_cnpj"
+import CPFCNPJ from "./cpf-cnpj"
+import Date from "./date-picker"
 import Select from "./select"
 import Phone from "./phone"
 import Email from "./email"
@@ -16,6 +17,7 @@ export default {
   Select,
   Email,
   Phone,
+  Date,
   Text,
   CNPJ,
   CPF,

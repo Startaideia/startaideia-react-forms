@@ -5,9 +5,11 @@ export const Container = styled.div`
   font-family: ${get("fonts.body")};
   display: flex;
   color: ${get("colors.black")};
+  ${get("components.checkbox.container")}
 
   &:hover {
     cursor: pointer;
+    ${get("components.checkbox.container.hover")}
   }
 `
 
@@ -26,11 +28,15 @@ export const Box = styled.div`
 
   &:hover {
     border-color: ${get("colors.primary")};
+    ${get("components.checkbox.hover")}
   }
 
   &.checked {
     background: ${get("colors.primary")};
     color: ${get("colors.white")};
     border-color: ${get("colors.primary")};
+    ${get("components.checkbox.box.checked")}
   }
+
+  ${get("components.checkbox.box")}
 `

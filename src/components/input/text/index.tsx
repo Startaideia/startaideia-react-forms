@@ -19,7 +19,16 @@ interface Props {
  * @param {Props} { name, label, mask, ...rest }
  * @returns
  */
-function Text({ name, label, mask, beforeIcon, afterIcon, ...rest }: Props) {
+function Text({
+  name,
+  label,
+  mask,
+  transformValue = (value: string) => value,
+  onInput = (value: string) => value,
+  beforeIcon,
+  afterIcon,
+  ...rest
+}: Props) {
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
 
@@ -28,7 +37,8 @@ function Text({ name, label, mask, beforeIcon, afterIcon, ...rest }: Props) {
   const [focus, setFocus] = useState<boolean>(false)
   const [touched, setTouched] = useState(false)
 
-  const props: { [x: string]: any } = _.omit(rest, _.keys(availableRules))
+  const props = _.omit(rest, _.keys(availableRules))
+
   const className = utilService.parseClassName({
     beforeIcon,
     afterIcon,
@@ -53,7 +63,7 @@ function Text({ name, label, mask, beforeIcon, afterIcon, ...rest }: Props) {
         value = mask(unmaskedValue)
       }
     }
-    onChange(value)
+    onChange(onInput(value))
     setErrors(validate())
   }
 
@@ -85,7 +95,7 @@ function Text({ name, label, mask, beforeIcon, afterIcon, ...rest }: Props) {
           onChange={handleChange}
           onBlur={handleBlur}
           onFocus={() => setFocus(true)}
-          value={getValue()}
+          value={transformValue(getValue())}
           className={className}
           {...props}
         />

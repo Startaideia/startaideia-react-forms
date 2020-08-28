@@ -76,6 +76,8 @@ const App = () => {
         isRequired
       />
 
+      <Input.Date name="birth_date" label="Aniversário" isRequired />
+
       <Form.Footer>
         <Button.Submit text="Entrar" />
       </Form.Footer>

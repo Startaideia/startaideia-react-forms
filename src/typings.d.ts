@@ -18,3 +18,4 @@ declare module "*.svg" {
 }
 
 declare module "string-mask"
+declare module "validator/lib/isDate"

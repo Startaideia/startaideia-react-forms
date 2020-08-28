@@ -7,6 +7,10 @@ const Field: any = styled.div`
   display: flex;
   flex-direction: column;
 
+  .hoverble:hover {
+    cursor: pointer;
+  }
+
   .icon-container {
     position: absolute;
     right: 0;

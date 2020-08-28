@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Dropdown, Message, Input, Field, Label } from "styles"
 import { IoMdCloseCircle } from "react-icons/io"
+import { BsChevronDown } from "react-icons/bs"
 import { Col } from "react-grid-system"
 import * as availableRules from "rules"
 import { utilService } from "services"
@@ -37,6 +38,7 @@ function Select({ name, label, source, ...rest }: Props) {
   const className = utilService.parseClassName({ focus, touched, errors })
 
   const { onChange, validate, value } = useField(name, rules)
+  const inputRef: any = useRef()
 
   /**
    * Handle dataSource changes after first render
@@ -137,12 +139,12 @@ function Select({ name, label, source, ...rest }: Props) {
           onBlur={handleBlur}
           onFocus={handleFocus}
           className={className}
+          ref={inputRef}
         />
-        {selectedItem && (
-          <div className="icon-container has-after-icon">
-            <IoMdCloseCircle onClick={handleClearSelection} />
-          </div>
-        )}
+        <div className="icon-container has-after-icon">
+          {selectedItem && <IoMdCloseCircle className="hoverble" onClick={handleClearSelection} />}
+          <BsChevronDown className="hoverble" onClick={() => inputRef?.current?.focus()} />
+        </div>
         <Dropdown className={className}>
           {dataSource
             .filter((item) => utilService.matches(querystring, item.label))
