@@ -17,10 +17,12 @@ import _ from "lodash"
  */
 function Checkbox({ name: iName, label, value = "on", text, ...rest }: any) {
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
-  const [rules] = useState(_.pick(rest, _.keys(availableRules)))
+  const { name, rules: groupRules } = useContext(GroupContext)
+  const [rules] = useState(
+    _.merge(_.pick(rest, _.keys(availableRules)), groupRules as any)
+  )
   const [errors, setErrors] = useState<String[] | null>(null)
   const [touched, setTouched] = useState<boolean>(false)
-  const { name } = useContext(GroupContext)
 
   const { onChange, getValue, validate } = useField(name || iName, rules)
   const className = utilService.parseClassName({ errors, touched })

@@ -18,9 +18,14 @@ function Example() {
     <Form onSubmit={(info: any) => console.log(info)}>
       <Input.CPF />
 
-      <Input.Group name="gender_group" label="Sexo">
-        <Input.Checkbox text="Feminino" value="F" />
-        <Input.Checkbox text="Masculino" value="M" />
+      <Input.Group
+        isRequired
+        orientation="horizontal"
+        name="gender_group"
+        label="Sexo"
+      >
+        <Input.Checkbox xs={6} text="Feminino" value="F" />
+        <Input.Checkbox xs={6} text="Masculino" value="M" />
       </Input.Group>
 
       <Form.Footer>
