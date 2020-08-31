@@ -91,7 +91,12 @@ const App = () => {
         <Input.Password isRequired={false} />
         <Input.CEP />
 
-        <Input.Select label="Sexo" name="gender" source={dataSet} />
+        <Input.Select
+          label="Sexo"
+          placeholder="Sexo"
+          name="gender"
+          source={dataSet}
+        />
 
         <Input.Checkbox name="remember_me" text="Mantenha-me conectado" />
 

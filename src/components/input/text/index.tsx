@@ -38,7 +38,7 @@ function Text({
   const [touched, setTouched] = useState(false)
   const [error] = errors || []
 
-  const props = _.omit(rest, _.keys(availableRules))
+  const props = _.omit(rest, [..._.keys(rules), ..._.keys(sizes)])
 
   const className = utilService.parseClassName({
     beforeIcon,

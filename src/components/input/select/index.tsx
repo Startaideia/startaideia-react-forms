@@ -34,6 +34,8 @@ function Select({ name, label, source, ...rest }: Props) {
   const [querystring, setQuerystring] = useState<string>("")
   const [touched, setTouched] = useState(false)
 
+  const props = _.omit(rest, [..._.keys(rules), ..._.keys(sizes)])
+
   const [focus, setFocus] = useState<boolean>(false)
   const className = utilService.parseClassName({ focus, touched, errors })
 
@@ -140,10 +142,19 @@ function Select({ name, label, source, ...rest }: Props) {
           onFocus={handleFocus}
           className={className}
           ref={inputRef}
+          {...props}
         />
         <div className="icon-container has-after-icon">
-          {selectedItem && <IoMdCloseCircle className="hoverble" onClick={handleClearSelection} />}
-          <BsChevronDown className="hoverble" onClick={() => inputRef?.current?.focus()} />
+          {selectedItem && (
+            <IoMdCloseCircle
+              className="hoverble"
+              onClick={handleClearSelection}
+            />
+          )}
+          <BsChevronDown
+            className="hoverble"
+            onClick={() => inputRef?.current?.focus()}
+          />
         </div>
         <Dropdown className={className}>
           {dataSource

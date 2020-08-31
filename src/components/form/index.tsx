@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { FormProvider, FormContext } from "providers"
 import { Form as StyledForm } from "styles"
 import { Container, Row, Col } from "react-grid-system"
+import { ThemeProvider } from "styled-components"
 import _ from "lodash"
 
 interface Props {
@@ -41,10 +42,12 @@ function FormInner({ onSubmit, children }: Props) {
   )
 }
 
-function Form({ initialValue, children, ...props }: Props) {
+function Form({ initialValue, children, theme = {}, ...props }: Props) {
   return (
     <FormProvider initialValue={initialValue}>
-      <FormInner {...props}>{children}</FormInner>
+      <FormInner {...props}>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </FormInner>
     </FormProvider>
   )
 }
