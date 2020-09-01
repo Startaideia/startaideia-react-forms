@@ -1,12 +1,12 @@
 import styled from "styled-components"
 import { get } from "theme"
 
-const Dropdown = styled.ul`
+const Dropdown: any = styled.ul`
   position: absolute;
   width: 100%;
   height: auto;
   max-height: 100px;
-  top: 40px;
+  top: ${({ fieldHeight }: any) => fieldHeight - 10 || 50}px;
   left: 0px;
   background: ${get("colors.white")};
   border: 1px solid #e6e6e6;

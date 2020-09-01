@@ -24,12 +24,13 @@ interface Props {
  * @param {Props} { name, label, source, ...rest }
  * @returns
  */
-function Select({ name, label, source, capitalize, ...rest }: Props) {
+function Multi({ name, label, capitalize, source, creatable, ...rest }: Props) {
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const [errors, setErrors] = useState<String[] | null>(null)
+  const fieldRef = useRef()
 
-  const [selectedItem, setSelectedItem] = useState<DataItem | null>(null)
+  const [selectedItem, setSelectedItem] = useState<DataItem[]>([])
   const [dataSource, setDataSource] = useState<DataItem[]>(source)
   const [querystring, setQuerystring] = useState<string>("")
   const [touched, setTouched] = useState(false)
@@ -54,7 +55,7 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
   useEffect(() => {
     if (!_.isEqual(dataSource, source)) {
       setDataSource(source)
-      setSelectedItem(null)
+      setSelectedItem([])
       return
     }
     setDataSource(source)
@@ -66,12 +67,9 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
    */
   useEffect(() => {
     if (!value) return
-
     // Check if the item is correct
-    const item = dataSource.find((item) => item.value === value)
-    if (item?.value !== selectedItem?.value) {
-      handleItemSelection(item as DataItem, false)()
-    }
+    const data = _.intersection(dataSource, value)
+    data.map((item: DataItem) => handleItemSelection(item, false))
   }, [value])
 
   /**
@@ -80,11 +78,9 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
    */
   function handleItemSelection(item: DataItem, isTouched: boolean) {
     return function () {
-      if (item.value === selectedItem?.value) return
-
-      // Set actived item
-      setSelectedItem(item)
-      onChange(item.value)
+      const data = [...selectedItem, item]
+      setSelectedItem(data)
+      onChange(data.map((item: DataItem) => item.value))
       setErrors(validate())
       setTouched(isTouched)
       setQuerystring("")
@@ -95,12 +91,17 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
    * Handle clear selection
    *
    */
-  function handleClearSelection() {
-    setSelectedItem(null)
-    onChange(null)
-    setErrors(validate())
-    setTouched(true)
-    setQuerystring("")
+  function handleClearSelection(item: any) {
+    return function (e: any) {
+      e.preventDefault()
+      const data = [...selectedItem]
+      const index = selectedItem.indexOf(item)
+      data.splice(index, 1)
+      setSelectedItem(data)
+      onChange(data.map((item: DataItem) => item.value))
+      setErrors(validate())
+      setTouched(true)
+    }
   }
 
   /**
@@ -119,7 +120,21 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
     if (focus) {
       return querystring
     }
-    return selectedItem?.label || ""
+    return ""
+  }
+
+  /**
+   * Handle item creation
+   *
+   */
+  function handleItemCreate() {
+    handleItemSelection(
+      {
+        label: querystring,
+        value: querystring,
+      },
+      true
+    )()
   }
 
   /**
@@ -143,13 +158,30 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
    */
   function handleEmptyList(list: any[]) {
     if (list.length > 0) return list
-    return <li>Nenhuma opção encontrada</li>
+    if (creatable) {
+      return <li onMouseDown={handleItemCreate}>Criar item: {querystring}</li>
+    }
+    return <li>Nenhum item encontrado</li>
   }
 
   return (
     <Col xs={12} {...sizes}>
-      <Field className={className}>
+      <Field ref={fieldRef} className={className}>
         {label && <Label className={className}>{label}</Label>}
+        {selectedItem.length > 0 && (
+          <div className="badge-container">
+            {selectedItem.map((item, key) => (
+              <span
+                onClick={handleClearSelection(item)}
+                className="badge"
+                key={key}
+              >
+                {item.label}
+                <IoMdCloseCircle className="hoverble" />
+              </span>
+            ))}
+          </div>
+        )}
         <Input
           value={getInputValue()}
           onChange={handleInputChange}
@@ -160,20 +192,17 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
           {...props}
         />
         <div className="icon-container has-after-icon">
-          {selectedItem && (
-            <IoMdCloseCircle
-              className="hoverble"
-              onClick={handleClearSelection}
-            />
-          )}
           <BsChevronDown
             className="hoverble"
             onClick={() => inputRef?.current?.focus()}
           />
         </div>
-        <Dropdown className={className}>
+        <Dropdown
+          fieldHeight={(fieldRef?.current as any)?.clientHeight}
+          className={className}
+        >
           {handleEmptyList(
-            dataSource
+            _.difference(dataSource, selectedItem)
               .filter((item) => utilService.matches(querystring, item.label))
               .map((item) => (
                 <li
@@ -195,4 +224,4 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
   )
 }
 
-export default Select
+export default Multi

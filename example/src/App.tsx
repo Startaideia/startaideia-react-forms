@@ -13,23 +13,23 @@ const dataSet = [
   },
   {
     value: "FA",
-    label: "Feminino",
+    label: "Renault",
   },
   {
     value: "FE",
-    label: "Feminino",
+    label: "Citroen",
   },
   {
     value: "FF",
-    label: "Feminino",
+    label: "Ford",
   },
   {
     value: "FR",
-    label: "Feminino",
+    label: "Chevrolet",
   },
   {
     value: "FK",
-    label: "Feminino",
+    label: "Honda",
   },
 ]
 
@@ -37,6 +37,21 @@ function Example() {
   return (
     <Form onSubmit={(info: any) => console.log(info)}>
       <Input.CPF />
+
+      <Input.Multi
+        label="Sexo"
+        placeholder="Sexo"
+        name="gender_multi"
+        source={dataSet}
+      />
+
+      <Input.Multi
+        label="Sexo"
+        placeholder="Sexo"
+        name="gender_multi_creatable"
+        creatable
+        source={dataSet}
+      />
 
       <Input.Group
         isRequired

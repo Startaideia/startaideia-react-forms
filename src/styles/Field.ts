@@ -11,6 +11,26 @@ const Field: any = styled.div`
     cursor: pointer;
   }
 
+  .badge {
+    font-size: ${get("fontSize.sm")};
+    font-family: ${get("fonts.body")};
+    display: inline-flex;
+    padding: 2px 5px;
+    background: ${get("colors.primary")};
+    color: ${get("colors.white")};
+    border-radius: 2px;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+
+    .hoverble {
+      margin-left: 5px;
+      ${get("components.field.badge.hoverble")};
+    }
+
+    ${get("components.field.badge")};
+  }
+
   .icon-container {
     position: absolute;
     right: 0;

@@ -4,6 +4,7 @@ import CPFCNPJ from "./cpf-cnpj"
 import Date from "./date-picker"
 import Select from "./select"
 import Phone from "./phone"
+import Multi from "./multi"
 import Email from "./email"
 import Group from "./group"
 import Text from "./text"
@@ -19,6 +20,7 @@ export default {
   Email,
   Phone,
   Group,
+  Multi,
   Date,
   Text,
   CNPJ,
