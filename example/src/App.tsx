@@ -11,6 +11,26 @@ const dataSet = [
     value: "F",
     label: "Feminino",
   },
+  {
+    value: "FA",
+    label: "Feminino",
+  },
+  {
+    value: "FE",
+    label: "Feminino",
+  },
+  {
+    value: "FF",
+    label: "Feminino",
+  },
+  {
+    value: "FR",
+    label: "Feminino",
+  },
+  {
+    value: "FK",
+    label: "Feminino",
+  },
 ]
 
 function Example() {

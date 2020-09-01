@@ -16,6 +16,7 @@ const Dropdown = styled.ul`
   font-family: ${get("fonts.body")};
   font-size: ${get("fontSize.sm")};
   display: none;
+  overflow-y: scroll;
 
   &.has-focus {
     display: block;
