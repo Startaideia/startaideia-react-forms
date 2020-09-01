@@ -23,6 +23,7 @@ function Text({
   name,
   label,
   mask,
+  capitalize = false,
   transformValue = (value: string) => value,
   onInput = (value: string) => value,
   beforeIcon,
@@ -43,8 +44,9 @@ function Text({
   const className = utilService.parseClassName({
     beforeIcon,
     afterIcon,
-    errors,
+    capitalize,
     touched,
+    errors,
     focus,
   })
 

@@ -1,8 +1,9 @@
 export function parseClassName({
+  capitalize,
   beforeIcon,
   afterIcon,
-  errors,
   touched,
+  errors,
   focus,
 }: any): string {
   const className = []
@@ -27,6 +28,10 @@ export function parseClassName({
   if (afterIcon) {
     className.push("has-icon")
     className.push("has-after-icon")
+  }
+
+  if (capitalize) {
+    className.push("capitalize")
   }
 
   return className.join(" ")

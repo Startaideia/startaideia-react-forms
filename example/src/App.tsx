@@ -47,6 +47,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Form onSubmit={onSubmit}>
+        <Input.Text name="name" capitalize={true} label="Nome completo" />
         <Input.CPFCNPJ />
         <Input.CNPJ />
 

@@ -35,6 +35,11 @@ const Input: any = styled.input`
     ${get("components.input.beforeIcon")}
   }
 
+  &.capitalize {
+    text-transform: capitalize;
+    ${get("components.input.capitalize")}
+  }
+
   ${get("components.input")}
 `
 
