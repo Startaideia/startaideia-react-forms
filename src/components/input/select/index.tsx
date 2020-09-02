@@ -24,12 +24,21 @@ interface Props {
  * @param {Props} { name, label, source, ...rest }
  * @returns
  */
-function Select({ name, label, source, capitalize, ...rest }: Props) {
+function Select({
+  name,
+  label,
+  source,
+  capitalize,
+  defaultValue = null,
+  ...rest
+}: Props) {
   const [sizes] = useState(_.pick(rest, ["xs", "sm", "md", "lg", "xl", "xxl"]))
   const [rules] = useState(_.pick(rest, _.keys(availableRules)))
   const [errors, setErrors] = useState<String[] | null>(null)
 
-  const [selectedItem, setSelectedItem] = useState<DataItem | null>(null)
+  const [selectedItem, setSelectedItem] = useState<DataItem | null>(
+    defaultValue
+  )
   const [dataSource, setDataSource] = useState<DataItem[]>(source)
   const [querystring, setQuerystring] = useState<string>("")
   const [touched, setTouched] = useState(false)
@@ -73,6 +82,20 @@ function Select({ name, label, source, capitalize, ...rest }: Props) {
       handleItemSelection(item as DataItem, false)()
     }
   }, [value])
+
+  /**
+   * Handle values changes after first render
+   *
+   */
+  useEffect(() => {
+    if (!defaultValue) return
+
+    // Check if the item is correct
+    const item = dataSource.find((item) => item.value === defaultValue)
+    if (item?.value !== selectedItem?.value) {
+      handleItemSelection(item as DataItem, false)()
+    }
+  }, [defaultValue])
 
   /**
    * Handle item selection

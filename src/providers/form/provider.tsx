@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import FormContext, { INITAL_VALUE } from "./context"
+import FormContext from "./context"
 import { IFormContext } from "./context.interface"
 
 interface Props {
@@ -10,7 +10,13 @@ interface Props {
 function FormProvider({ initialValue = {}, children }: Props) {
   const [state, setState] = useState<IFormContext>({
     initialValue,
-    ...INITAL_VALUE,
+    ...{
+      isLoading: false,
+      fields: [],
+      currentValue: {},
+      validationRules: {},
+      validationState: {},
+    },
   })
 
   function isValid(): boolean {

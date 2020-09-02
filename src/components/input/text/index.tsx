@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Message, Input, Field, Label } from "styles"
 import { Col } from "react-grid-system"
 import * as availableRules from "rules"
@@ -23,6 +23,7 @@ function Text({
   name,
   label,
   mask,
+  defaultValue,
   capitalize = false,
   transformValue = (value: string) => value,
   onInput = (value: string) => value,
@@ -49,6 +50,25 @@ function Text({
     errors,
     focus,
   })
+
+  useEffect(
+    function () {
+      if (!defaultValue) return
+
+      let value = defaultValue
+      if (mask) {
+        const unmaskedValue = value.replace(/[^\d\p{L}]/g, "")
+        if (typeof mask === "string") {
+          value = Mask.apply(unmaskedValue, mask)
+        } else {
+          value = mask(unmaskedValue)
+        }
+      }
+      onChange(onInput(value))
+      setErrors(validate())
+    },
+    [defaultValue]
+  )
 
   /**
    * Handle input change, adding it values to form context,
