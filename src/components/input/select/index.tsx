@@ -29,6 +29,7 @@ function Select({
   label,
   source,
   capitalize,
+  onInput = (value: any) => value,
   defaultValue = null,
   ...rest
 }: Props) {
@@ -108,6 +109,7 @@ function Select({
       // Set actived item
       setSelectedItem(item)
       onChange(item.value)
+      onInput(item)
       setErrors(validate())
       setTouched(isTouched)
       setQuerystring("")
@@ -121,6 +123,7 @@ function Select({
   function handleClearSelection() {
     setSelectedItem(null)
     onChange(null)
+    onInput(null)
     setErrors(validate())
     setTouched(true)
     setQuerystring("")
