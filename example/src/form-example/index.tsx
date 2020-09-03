@@ -13,36 +13,43 @@ const options = [
 ]
 
 function FormExample() {
+  const [source, setSource] = React.useState(options)
   function handleSubmit(data: any) {
     console.log(data)
     return () => alert("acabou a submissão")
   }
+
+  React.useEffect(function () {
+    setTimeout(function () {
+      setSource([
+        {
+          label: "Masculino",
+          value: "M",
+        },
+        {
+          label: "Feminino",
+          value: "F",
+        },
+        {
+          label: "Outros",
+          value: "O",
+        },
+      ])
+    }, 5000)
+  }, [])
+
   return (
-    <React.Fragment>
-      <Form initialValue={{}} onSubmit={handleSubmit}>
-        <Input.Select
-          name="gender"
-          label="Sexo"
-          source={options}
-          defaultValue="M"
-        />
-        <Form.Footer>
-          <Button.Submit text="Submit" />
-        </Form.Footer>
-      </Form>
-      <Form initialValue={{}} onSubmit={handleSubmit}>
-        <Input.CPF defaultValue="44391032864" />
-        <Input.Select
-          defaultValue=""
-          name="gender"
-          label="Sexo"
-          source={options}
-        />
-        <Form.Footer>
-          <Button.Submit text="Submit" />
-        </Form.Footer>
-      </Form>
-    </React.Fragment>
+    <Form initialValue={{}} onSubmit={handleSubmit}>
+      <Input.Select
+        name="gender"
+        label="Sexo"
+        source={source}
+        defaultValue="O"
+      />
+      <Form.Footer>
+        <Button.Submit text="Submit" />
+      </Form.Footer>
+    </Form>
   )
 }
 

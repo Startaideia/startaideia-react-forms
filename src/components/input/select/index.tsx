@@ -56,6 +56,7 @@ function Select({
 
   const { onChange, validate, value } = useField(name, rules)
   const inputRef: any = useRef()
+  const fieldRef: any = useRef()
 
   /**
    * Handle dataSource changes after first render
@@ -64,6 +65,19 @@ function Select({
   useEffect(() => {
     if (!_.isEqual(dataSource, source)) {
       setDataSource(source)
+
+      const item = source.find((item) => item.value === value)
+      if (item && item?.value !== selectedItem?.value) {
+        handleItemSelection(item as DataItem, false)()
+        return
+      }
+
+      const itemDefault = source.find((item) => item.value === defaultValue)
+      if (itemDefault && itemDefault?.value !== selectedItem?.value) {
+        handleItemSelection(itemDefault as DataItem, false)()
+        return
+      }
+
       setSelectedItem(null)
       return
     }
@@ -95,7 +109,10 @@ function Select({
     const item = dataSource.find((item) => item.value === defaultValue)
     if (item?.value !== selectedItem?.value) {
       handleItemSelection(item as DataItem, false)()
+      return
     }
+
+    setSelectedItem(null)
   }, [defaultValue])
 
   /**
@@ -174,7 +191,7 @@ function Select({
 
   return (
     <Col xs={12} {...sizes}>
-      <Field className={className}>
+      <Field ref={fieldRef} className={className}>
         {label && <Label className={className}>{label}</Label>}
         <Input
           value={getInputValue()}
@@ -197,7 +214,10 @@ function Select({
             onClick={() => inputRef?.current?.focus()}
           />
         </div>
-        <Dropdown className={className}>
+        <Dropdown
+          fieldHeight={(fieldRef?.current as any)?.clientHeight}
+          className={className}
+        >
           {handleEmptyList(
             dataSource
               .filter((item) => utilService.matches(querystring, item.label))
