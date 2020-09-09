@@ -46,6 +46,7 @@ function FormExample() {
         source={source}
         defaultValue="O"
       />
+      <Input.Textarea name="message" rows="20" placeholder="Mensagem" />
       <Form.Footer>
         <Button.Submit text="Submit" />
       </Form.Footer>

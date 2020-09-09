@@ -1,3 +1,4 @@
+import Textarea from "./textarea"
 import Password from "./password"
 import Checkbox from "./checkbox"
 import CPFCNPJ from "./cpf-cnpj"
@@ -15,6 +16,7 @@ import CEP from "./cep"
 export default {
   Checkbox,
   Password,
+  Textarea,
   CPFCNPJ,
   Select,
   Email,

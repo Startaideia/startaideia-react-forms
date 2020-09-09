@@ -1,3 +1,4 @@
+export { default as Textarea } from "./Textarea"
 export { default as Dropdown } from "./Dropdown"
 export { default as Message } from "./Message"
 export { default as Button } from "./Button"

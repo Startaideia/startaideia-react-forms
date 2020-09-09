@@ -29,5 +29,8 @@ export default {
     input: `
       border-width: 0px 0px 1px 0px;
     `,
+    textarea: `
+      border-width: 0px 0px 1px 0px;
+    `,
   },
 }
