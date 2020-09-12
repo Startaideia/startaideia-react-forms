@@ -1,10 +1,14 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-forms'
-import 'react-forms/dist/index.css'
+import { Form } from 'react-forms'
+import { Input } from './components'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <Form>
+      <Input name='name' />
+    </Form>
+  )
 }
 
 export default App
