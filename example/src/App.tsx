@@ -13,11 +13,17 @@ const App = () => {
   }, [])
 
   return (
-    <Form onSubmit={(data) => console.log(data)}>
+    <Form
+      initialValue={{ user: { email } }}
+      onSubmit={(data) => console.log(data)}
+    >
       <Shape path='user'>
-        <Input name='email' initialValue={email} />
+        <Input name='email' initialValue='outro@email.com' />
         <Input name='password' />
       </Shape>
+
+      <Input name='password' initialValue='654321' />
+
       <button>Submit</button>
     </Form>
   )

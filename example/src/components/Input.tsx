@@ -2,13 +2,15 @@ import React, { useEffect } from 'react'
 import { useField } from 'react-forms'
 
 function Input({ name, initialValue = '' }) {
-  const { field, updateValue } = useField(name)
+  const { field, updateInitialValue, updateValue } = useField(name)
 
   useEffect(
     function () {
-      updateValue(initialValue)
+      if (initialValue) {
+        updateInitialValue(initialValue)
+      }
     },
-    [updateValue, initialValue]
+    [updateInitialValue, initialValue]
   )
 
   function handleChange(e) {
