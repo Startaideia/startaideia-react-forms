@@ -14,7 +14,7 @@ function FormProvider({ onChange, children }: IFormProps) {
     function () {
       const output = {}
       fields.forEach(function (field) {
-        set(output, field.name, field.value)
+        set(output, field.path, field.value)
       })
       return output
     },
@@ -68,6 +68,7 @@ function FormProvider({ onChange, children }: IFormProps) {
         createField,
         updateField,
         removeField,
+        path: '',
         fields
       }}
     >

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { Form } from 'react-forms'
+import { Form, Shape } from 'react-forms'
 import { Input } from './components'
 
 const App = () => {
@@ -14,8 +14,10 @@ const App = () => {
 
   return (
     <Form onSubmit={(data) => console.log(data)}>
-      <Input name='email' initialValue={email} />
-      <Input name='password' />
+      <Shape path='user'>
+        <Input name='email' initialValue={email} />
+        <Input name='password' />
+      </Shape>
       <button>Submit</button>
     </Form>
   )
