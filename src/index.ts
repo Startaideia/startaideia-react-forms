@@ -2,4 +2,4 @@
 export { useField } from './core'
 
 /* Components */
-export { Form } from './core'
+export { FormProvider } from './core'
