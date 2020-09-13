@@ -1,5 +1,8 @@
 /* Hooks */
 export { useField } from './core'
 
-/* Components */
+/* Core Components */
 export { FormProvider } from './core'
+
+/* Web Components */
+export { Form } from './web'

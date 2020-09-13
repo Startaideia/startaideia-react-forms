@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { FormProvider } from 'react-forms'
+import { Form } from 'react-forms'
 import { Input } from './components'
 
 const App = () => {
@@ -13,10 +13,11 @@ const App = () => {
   }, [])
 
   return (
-    <FormProvider onChange={(data) => console.log(data)}>
+    <Form onSubmit={(data) => console.log(data)}>
       <Input name='email' initialValue={email} />
       <Input name='password' />
-    </FormProvider>
+      <button>Submit</button>
+    </Form>
   )
 }
 
