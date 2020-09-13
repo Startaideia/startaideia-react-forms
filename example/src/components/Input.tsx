@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useField } from 'react-forms'
+import './index.css'
 
 function Input({ name, initialValue = '' }) {
   const { field, updateInitialValue, updateValue } = useField(name)

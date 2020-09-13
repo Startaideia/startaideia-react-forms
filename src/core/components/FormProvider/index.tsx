@@ -16,7 +16,7 @@ function FormProvider({ onChange, children, ...props }: IFormProps) {
     function () {
       const output = {}
       fields.forEach(function (field) {
-        set(output, field.path, field.value)
+        set(output, field.path, field.value || '')
       })
       return output
     },
@@ -62,17 +62,6 @@ function FormProvider({ onChange, children, ...props }: IFormProps) {
       }
     },
     [onChange, fields]
-  )
-
-  /* Listen to initial value changes */
-  useEffect(
-    function () {
-      fields.forEach(function (field) {
-        field.value = get(initialValue, field.path, field.value)
-        updateField(field)
-      })
-    },
-    [initialValue, updateField]
   )
 
   return (

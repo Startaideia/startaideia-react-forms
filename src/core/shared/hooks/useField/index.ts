@@ -43,7 +43,7 @@ export default function (name: string) {
       const value = get(initialValue, path, fieldValue)
       updateField(new Field({ name, path, value }))
     },
-    [updateField]
+    [initialValue, updateField]
   )
 
   /* Create and remove field from the form */
