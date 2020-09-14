@@ -4,8 +4,9 @@ import get from 'lodash/get'
 import { FormContext } from 'core/shared/contexts'
 import { Field } from 'core/shared/models'
 
-export default function (name: string) {
+export default function (name: string, validationRules: any[] = []) {
   const params = useContext(FormContext)
+  const { formValidationState } = params
   const { path: contextPath } = params
   const { initialValue } = params
   const { createField } = params
@@ -29,10 +30,17 @@ export default function (name: string) {
     [fields, path]
   )
 
+  const errors = useMemo(
+    function () {
+      return fields.find((f) => f.path === path)?.errors
+    },
+    [fields, path]
+  )
+
   /* Updates the field value */
   const updateValue = useCallback(
     function (value: string) {
-      updateField(new Field({ name, path, value }))
+      updateField(new Field({ name, path, validationRules, value }))
     },
     [updateField]
   )
@@ -41,7 +49,7 @@ export default function (name: string) {
   const updateInitialValue = useCallback(
     function (fieldValue: string) {
       const value = get(initialValue, path, fieldValue)
-      updateField(new Field({ name, path, value }))
+      updateField(new Field({ name, path, validationRules, value }))
     },
     [initialValue, updateField]
   )
@@ -49,7 +57,7 @@ export default function (name: string) {
   /* Create and remove field from the form */
   useEffect(
     function () {
-      createField(new Field({ name, path }))
+      createField(new Field({ name, path, validationRules }))
       return function () {
         removeField(new Field({ name, path }))
       }
@@ -58,10 +66,12 @@ export default function (name: string) {
   )
 
   return {
+    formValidationState,
     updateInitialValue,
     initialValue,
     updateField,
     updateValue,
+    errors,
     field
   }
 }

@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { Form, Shape } from 'react-forms'
 import { Input } from './components'
 
 const App = () => {
-  const [email, setEmail] = useState('gu.boas13@gmail.com')
-
-  useEffect(function () {
-    setTimeout(function () {
-      setEmail('agathaemm@gmail.com')
-    }, 1000)
-  }, [])
+  const [email] = useState('gu.boas13@gmail.com')
 
   return (
     <Form
