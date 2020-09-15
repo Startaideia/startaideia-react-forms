@@ -1,13 +1,9 @@
 /* Hooks */
-export { useField } from './core'
+export { useControl } from './packages/core'
 
 /* Core Components */
-export { FormProvider } from './core'
-export { Shape } from './core'
-
-/* Core Factories */
-export { createRule } from './core'
-export { bootRules } from './core'
+export { FormProvider } from './packages/core'
+export { Shape } from './packages/core'
 
 /* Web Components */
 export { Input } from './web'

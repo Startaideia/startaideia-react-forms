@@ -1,19 +1,14 @@
-import React, { useCallback } from 'react'
+import React from 'react'
+import { useControl } from 'packages/core'
 
-import { IFieldProps } from 'web/types'
-import { bootRules, useField } from 'core'
-
-function Text({ name, rules = {} }: IFieldProps) {
-  const { updateValue } = useField(name, bootRules(rules))
-
-  const handleChange = useCallback(
-    function (e) {
-      updateValue(e.target.value)
-    },
-    [updateValue]
+function Text({ name, initialValue = '' }) {
+  const { setValue, value } = useControl(name, { initialValue })
+  return (
+    <fieldset>
+      <legend>Campo</legend>
+      <input onChange={(e) => setValue(e.target.value)} value={value} />
+    </fieldset>
   )
-
-  return <input onChange={handleChange} />
 }
 
 export default Text

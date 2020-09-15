@@ -1,29 +1,12 @@
-import React, { FormEvent, useCallback } from 'react'
+import React from 'react'
 
-import { FormContext } from 'core/shared/contexts'
-import { IFormProps } from 'web/types'
-import { FormProvider } from 'core'
+import { FormProvider, FormContext } from 'packages/core'
 
-function Form({ onSubmit, children, ...props }: IFormProps) {
-  /* Handle form submission */
-  const handleSubmit = useCallback(
-    function (values) {
-      return function (e: FormEvent) {
-        e.preventDefault()
-        if (onSubmit) {
-          onSubmit({ ...values })
-        }
-      }
-    },
-    [onSubmit]
-  )
-
+function Form({ onSubmit, children, initialValue = {}, ...props }) {
   return (
-    <FormProvider {...props}>
+    <FormProvider onSubmit={onSubmit} initialValue={initialValue} {...props}>
       <FormContext.Consumer>
-        {({ getFormValue }) => (
-          <form onSubmit={handleSubmit(getFormValue())}>{children}</form>
-        )}
+        {({ handleSubmit }) => <form onSubmit={handleSubmit}>{children}</form>}
       </FormContext.Consumer>
     </FormProvider>
   )
