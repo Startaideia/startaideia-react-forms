@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Form, Input, Shape } from 'react-forms'
+import { Form, Input, Shape, Submit } from 'react-forms'
 
 const App = () => {
   return (
@@ -8,21 +8,23 @@ const App = () => {
       <Input.Text
         label='Nome'
         name='name'
-        equals='nome'
         isLength={{ min: 6, max: 16 }}
+        isRequired
       />
       <Input.Text
         label='CPF'
         name='cpf'
         mask='###.###.###-##'
         isCpf
+        isRequired
         props={{ maxLength: 14 }}
       />
 
       <Shape path='user'>
         <Input.Text isRequired isEmail name='email' label='E-mail' />
-        <Input.Text xs={6} name='password' label='Senha' />
+        <Input.Text isRequired xs={6} name='password' label='Senha' />
         <Input.Text
+          isRequired
           xs={6}
           name='password_confirmation'
           label='Confirme a senha'
@@ -30,7 +32,7 @@ const App = () => {
       </Shape>
 
       <Form.Footer>
-        <button>Submit</button>
+        <Submit>Submit</Submit>
       </Form.Footer>
     </Form>
   )

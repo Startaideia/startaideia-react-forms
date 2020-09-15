@@ -76,6 +76,12 @@ export default function (name: string, rules: any = {}) {
     [currentValue, rules]
   )
 
+  /* Mount valid attribute */
+  const valid = useMemo(() => errors.length === 0, [errors])
+
+  /* Mount invalid attribute */
+  const invalid = useMemo(() => !valid, [valid])
+
   /* run the validation every time the value is updated */
   useEffect(
     function () {
@@ -87,7 +93,9 @@ export default function (name: string, rules: any = {}) {
 
   return {
     validate,
+    invalid,
     errors,
+    valid,
     path
   }
 }

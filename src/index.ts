@@ -10,5 +10,6 @@ export { default as config } from './packages/config'
 export { createRule, loadRule } from './packages'
 
 /* Web Components */
+export { Submit } from './web'
 export { Input } from './web'
 export { Form } from './web'

@@ -5,5 +5,5 @@ export default function (params) {
 
   if (Array.isArray(params)) return params
 
-  return params ? [params] : false
+  return params ? [{}] : false
 }
