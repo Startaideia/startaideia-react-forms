@@ -20,12 +20,16 @@ const App = () => {
       initialValue={{ name, user: { email } }}
       onSubmit={(data) => console.log(data)}
     >
-      <Input.Text name='name' initialValue={email} />
+      <Input.Text label='Nome' name='name' initialValue={email} />
 
       <Shape path='user'>
-        <Input.Text isRequired isEmail name='email' />
-        <Input.Text xs={6} name='password' />
-        <Input.Text xs={6} name='password_confirmation' />
+        <Input.Text isRequired isEmail name='email' label='E-mail' />
+        <Input.Text xs={6} name='password' label='Senha' />
+        <Input.Text
+          xs={6}
+          name='password_confirmation'
+          label='Confirme a senha'
+        />
       </Shape>
 
       <Form.Footer>

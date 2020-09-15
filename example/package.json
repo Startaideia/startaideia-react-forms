@@ -21,6 +21,7 @@
     "react-dom": "link:../node_modules/react-dom",
     "react-forms": "link:..",
     "react-scripts": "link:../node_modules/react-scripts",
+    "styled-components": "^5.2.0",
     "typescript": "link:../node_modules/typescript"
   },
   "devDependencies": {
