@@ -2,10 +2,36 @@
 
 - [ ] Estilo
   - [ ] Adicionar mecânica de temas
+  - [ ] Adicionar texto de ajuda
+  - [ ] Melhorar a exibição de erros
   - [x] Adicionar mecânica de grid
 - [x] Máscaras
 - [ ] Validações
   - [x] Permitir criar novas regras
   - [x] Permitir passar parâmetros para as regras
-  - [ ] Adicionar parâmetros nas mensagens
+  - [x] Adicionar parâmetros nas mensagens
   - [ ] Permitir desativar as validações
+- [ ] Campos padrões
+  - [ ] E-mail
+  - [ ] Cpf
+  - [ ] Cnpj
+  - [ ] Telefone
+  - [ ] Data
+  - [ ] Select simples
+  - [ ] Select multiplo
+  - [ ] Foto de perfil
+  - [ ] Foto cropada
+  - [ ] Arquivo
+  - [ ] Textarea
+  - [ ] Editor wysiwyg
+  - [ ] Checkbox
+  - [ ] Radiobutton
+  - [ ] Cep
+  - [ ] Endereço
+  - [ ] Switch
+  - [ ] Dinheiro
+  - [ ] Senha
+  - [ ] Avaliação
+  - [ ] Grupo de seleção
+  - [ ] Sliders
+  - [ ] Toggle button
