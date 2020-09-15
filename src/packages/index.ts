@@ -13,3 +13,5 @@ export { useControl } from './core'
 
 /* Helpers */
 export { default as config } from './config'
+export { removeMask } from './masks'
+export { applyMask } from './masks'

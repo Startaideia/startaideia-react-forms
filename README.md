@@ -3,7 +3,7 @@
 - [ ] Estilo
   - [ ] Adicionar mecânica de temas
   - [x] Adicionar mecânica de grid
-- [ ] Máscaras
+- [x] Máscaras
 - [ ] Validações
   - [ ] Permitir criar novas regras
   - [ ] Permitir passar parâmetros para as regras

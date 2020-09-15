@@ -21,6 +21,12 @@ const App = () => {
       onSubmit={(data) => console.log(data)}
     >
       <Input.Text label='Nome' name='name' initialValue={email} />
+      <Input.Text
+        label='CPF'
+        name='cpf'
+        mask='###.###.###-##'
+        props={{ maxLength: 14 }}
+      />
 
       <Shape path='user'>
         <Input.Text isRequired isEmail name='email' label='E-mail' />
