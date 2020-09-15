@@ -13,5 +13,7 @@ export { useControl } from './core'
 
 /* Helpers */
 export { default as config } from './config'
+export { createRule } from './schema'
 export { removeMask } from './masks'
+export { loadRule } from './schema'
 export { applyMask } from './masks'

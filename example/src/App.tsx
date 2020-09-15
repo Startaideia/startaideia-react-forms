@@ -25,6 +25,7 @@ const App = () => {
         label='CPF'
         name='cpf'
         mask='###.###.###-##'
+        isCpf
         props={{ maxLength: 14 }}
       />
 

@@ -7,6 +7,7 @@ export { Shape } from './packages/core'
 
 /* Helpers */
 export { default as config } from './packages/config'
+export { createRule, loadRule } from './packages'
 
 /* Web Components */
 export { Input } from './web'
