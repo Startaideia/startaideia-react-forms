@@ -6,5 +6,6 @@
 - [x] Máscaras
 - [ ] Validações
   - [x] Permitir criar novas regras
-  - [ ] Permitir passar parâmetros para as regras
+  - [x] Permitir passar parâmetros para as regras
+  - [ ] Adicionar parâmetros nas mensagens
   - [ ] Permitir desativar as validações

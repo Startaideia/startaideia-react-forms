@@ -8,7 +8,7 @@ function Text({
   name,
   type = 'text',
   initialValue = '',
-  mask = '#',
+  mask = '',
   label = '',
   xs = 12,
   sm = undefined,
@@ -23,7 +23,10 @@ function Text({
 
   const handleChange = useCallback(
     function (e) {
-      setValue(applyMask(mask, e.target.value))
+      if (mask) {
+        return setValue(applyMask(mask, e.target.value))
+      }
+      return setValue(e.target.value)
     },
     [setValue]
   )

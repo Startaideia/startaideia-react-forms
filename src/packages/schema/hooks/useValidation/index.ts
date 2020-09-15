@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import get from 'lodash/get'
 
-import { isEmpty, loadRule } from 'packages/schema/helpers'
+import { isEmpty, loadRule, parseParams } from 'packages/schema/helpers'
 import { FormContext } from 'packages/core'
 import config from 'packages/config'
 
@@ -56,7 +56,7 @@ export default function (name: string, rules: any = {}) {
         try {
           const rule = await loadRule(ruleName)
 
-          if (!(await rule(currentValue))) {
+          if (!(await rule(currentValue, ...parseParams(rest[ruleName])))) {
             errors.push(messages[ruleName] || `Invalid rule: ${ruleName}`)
           }
         } catch (e) {}
