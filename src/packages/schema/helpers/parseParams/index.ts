@@ -2,5 +2,8 @@ export default function (params) {
   if (typeof params === 'string' || typeof params === 'object') {
     return [params]
   }
-  return params
+
+  if (Array.isArray(params)) return params
+
+  return params ? [params] : false
 }

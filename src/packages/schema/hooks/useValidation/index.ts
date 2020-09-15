@@ -55,11 +55,16 @@ export default function (name: string, rules: any = {}) {
       for (const ruleName in rest) {
         try {
           const rule = await loadRule(ruleName)
+          const params = parseParams(rest[ruleName])
 
-          if (!(await rule(currentValue, ...parseParams(rest[ruleName])))) {
-            errors.push(messages[ruleName] || `Invalid rule: ${ruleName}`)
+          if (params) {
+            if (!(await rule(currentValue, ...params))) {
+              errors.push(messages[ruleName] || `Invalid rule: ${ruleName}`)
+            }
           }
-        } catch (e) {}
+        } catch (e) {
+          console.log(e)
+        }
       }
 
       // Set the final validation state

@@ -9,7 +9,7 @@ const App = () => {
         label='Nome'
         name='name'
         equals='nome'
-        isLength={{ min: 6 }}
+        isLength={{ min: 6, max: 16 }}
       />
       <Input.Text
         label='CPF'
