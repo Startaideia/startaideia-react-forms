@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Form, Input, Shape } from 'react-forms'
 
 const App = () => {
-  const [email, setEmail] = useState('agathaemm@gmail.com')
+  const [email, setEmail] = useState('')
   const [name, setName] = useState('Agatha Ellen')
 
   useEffect(function () {
@@ -16,11 +16,14 @@ const App = () => {
   }, [])
 
   return (
-    <Form initialValue={{ name }} onSubmit={(data) => console.log(data)}>
+    <Form
+      initialValue={{ name, user: { email } }}
+      onSubmit={(data) => console.log(data)}
+    >
       <Input.Text name='name' initialValue={email} />
 
       <Shape path='user'>
-        <Input.Text name='email' initialValue={email} />
+        <Input.Text isRequired isEmail name='email' />
         <Input.Text name='password' />
       </Shape>
 

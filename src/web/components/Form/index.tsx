@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { FormProvider, FormContext } from 'packages/core'
+import { useFormValidation } from 'packages/schema'
+
+function FormConsumer({ children }) {
+  const { handleSubmit } = useContext(FormContext)
+  const { validationState } = useFormValidation()
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {children}
+      {validationState}
+    </form>
+  )
+}
 
 function Form({ onSubmit, children, initialValue = {}, ...props }) {
   return (
     <FormProvider onSubmit={onSubmit} initialValue={initialValue} {...props}>
-      <FormContext.Consumer>
-        {({ handleSubmit }) => <form onSubmit={handleSubmit}>{children}</form>}
-      </FormContext.Consumer>
+      <FormConsumer>{children}</FormConsumer>
     </FormProvider>
   )
 }

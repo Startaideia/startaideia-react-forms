@@ -18,12 +18,12 @@ function FormProvider({ onSubmit, initialValue, children }) {
     [setControls]
   )
 
-  /* Set the field value */
-  const setValue = useCallback(function (path: string, value: string) {
+  /* Set the field props */
+  const setProps = useCallback(function (path: string, value, key: string) {
     setControls(function (previousControls) {
       const control = previousControls.find((c) => c.path === path)
       return unionBy(
-        [{ ...control, value } as FormControl, ...previousControls],
+        [{ ...control, [key]: value } as FormControl, ...previousControls],
         'path'
       )
     })
@@ -58,7 +58,8 @@ function FormProvider({ onSubmit, initialValue, children }) {
         formData,
         handleSubmit,
         setControl,
-        setValue
+        setProps,
+        controls
       }}
     >
       {children}

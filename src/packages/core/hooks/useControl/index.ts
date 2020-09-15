@@ -15,13 +15,15 @@ export default function (name: string, { initialValue = '' } = {}) {
     [params.path, name]
   )
 
+  /* Set the form control value */
   const setValue = useCallback(
     function (value: string) {
-      params.setValue(path, value)
+      params.setProps(path, value, 'value')
     },
     [path]
   )
 
+  /* Gets the form control value */
   const value = useMemo(
     function () {
       return get(params.formData, path, '')
