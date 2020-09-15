@@ -1,7 +1,13 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import print from 'sprintf-js'
 import get from 'lodash/get'
 
-import { isEmpty, loadRule, parseParams } from 'packages/schema/helpers'
+import {
+  isEmpty,
+  loadRule,
+  parseParams,
+  toArray
+} from 'packages/schema/helpers'
 import { FormContext } from 'packages/core'
 import config from 'packages/config'
 
@@ -59,7 +65,8 @@ export default function (name: string, rules: any = {}) {
 
           if (params) {
             if (!(await rule(currentValue, ...params))) {
-              errors.push(messages[ruleName] || `Invalid rule: ${ruleName}`)
+              const message = messages[ruleName] || `Invalid rule: ${ruleName}`
+              errors.push(print.vsprintf(message, toArray(rest[ruleName])))
             }
           }
         } catch (e) {

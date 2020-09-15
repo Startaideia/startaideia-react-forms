@@ -8,7 +8,8 @@ const App = () => {
       <Input.Text
         label='Nome'
         name='name'
-        isLength={{ min: 6, max: 16 }}
+        minLength={6}
+        maxLength={16}
         isRequired
       />
       <Input.Text

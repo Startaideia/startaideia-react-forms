@@ -1,5 +1,5 @@
 export default function (params) {
-  if (typeof params === 'string' || typeof params === 'object') {
+  if (['string', 'object', 'number'].indexOf(typeof params) !== -1) {
     return [params]
   }
 
