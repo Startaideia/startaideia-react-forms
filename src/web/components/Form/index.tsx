@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
+import { Container, Row, Col } from 'react-grid-system'
 
 import { FormProvider, FormContext } from 'packages/core'
-import { useFormValidation } from 'packages/schema'
 
 function FormConsumer({ children }) {
   const { handleSubmit } = useContext(FormContext)
-  const { validationState } = useFormValidation()
 
   return (
     <form onSubmit={handleSubmit}>
-      {children}
-      {validationState}
+      <Container>
+        <Row>{children}</Row>
+      </Container>
     </form>
   )
 }
@@ -22,5 +22,9 @@ function Form({ onSubmit, children, initialValue = {}, ...props }) {
     </FormProvider>
   )
 }
+
+Form.Footer = Col
+Form.Row = Row
+Form.Col = Col
 
 export default Form

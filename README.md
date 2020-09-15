@@ -2,7 +2,7 @@
 
 - [ ] Estilo
   - [ ] Adicionar mecânica de temas
-  - [ ] Adicionar mecânica de grid
+  - [x] Adicionar mecânica de grid
 - [ ] Máscaras
 - [ ] Validações
   - [ ] Permitir criar novas regras

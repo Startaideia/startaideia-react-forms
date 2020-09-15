@@ -24,10 +24,13 @@ const App = () => {
 
       <Shape path='user'>
         <Input.Text isRequired isEmail name='email' />
-        <Input.Text name='password' />
+        <Input.Text xs={6} name='password' />
+        <Input.Text xs={6} name='password_confirmation' />
       </Shape>
 
-      <button>Submit</button>
+      <Form.Footer>
+        <button>Submit</button>
+      </Form.Footer>
     </Form>
   )
 }
