@@ -10,3 +10,6 @@ export { useFormValidation } from './schema'
 export { useDidMountEffect } from './core'
 export { useValidation } from './schema'
 export { useControl } from './core'
+
+/* Helpers */
+export { default as config } from './config'

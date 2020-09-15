@@ -5,6 +5,9 @@ export { useControl } from './packages/core'
 export { FormProvider } from './packages/core'
 export { Shape } from './packages/core'
 
+/* Helpers */
+export { default as config } from './packages/config'
+
 /* Web Components */
 export { Input } from './web'
 export { Form } from './web'
