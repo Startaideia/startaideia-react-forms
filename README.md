@@ -14,7 +14,7 @@
   - [x] Adicionar parâmetros nas mensagens
   - [ ] Permitir desativar as validações
 - [ ] Campos padrões
-  - [ ] E-mail
+  - [x] E-mail
   - [ ] Cpf
   - [ ] Cnpj
   - [ ] Telefone

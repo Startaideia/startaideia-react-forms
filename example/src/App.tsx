@@ -27,12 +27,10 @@ const App = () => {
       />
 
       <Shape path='user'>
-        <Input.Text
+        <Input.Email
+          help='Será o e-mail utilizado em sua conta'
           isRequired
           isEmail
-          name='email'
-          label='E-mail'
-          help='Será o e-mail utilizado em sua conta'
         />
         <Input.Text isRequired xs={6} name='password' label='Senha' />
         <Input.Text

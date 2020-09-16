@@ -22,6 +22,8 @@ function Text({
   help = undefined,
   append = undefined,
   prepend = undefined,
+  placeholder = '',
+  inputmode = 'text',
   props,
   ...rest
 }: any) {
@@ -90,6 +92,8 @@ function Text({
             onFocus={handleFocus}
             value={value}
             className={className}
+            placeholder={placeholder}
+            inputmode={inputmode}
             {...props}
           />
           {append && <Addon className='append'>{append}</Addon>}
