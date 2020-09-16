@@ -15,16 +15,7 @@ const App = () => {
         isRequired
         append={<FaUser />}
       />
-      <Input.Text
-        label='CPF'
-        name='cpf'
-        mask='###.###.###-##'
-        isCpf
-        isRequired
-        props={{ maxLength: 14 }}
-        prepend='R$'
-        append=',00'
-      />
+      <Input.Cpf isRequired />
 
       <Shape path='user'>
         <Input.Email

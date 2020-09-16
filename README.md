@@ -15,7 +15,7 @@
   - [ ] Permitir desativar as validações
 - [ ] Campos padrões
   - [x] E-mail
-  - [ ] Cpf
+  - [x] Cpf
   - [ ] Cnpj
   - [ ] Telefone
   - [ ] Data
