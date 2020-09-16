@@ -1,10 +1,11 @@
 # Roadmap
 
 - [ ] Estilo
-  - [ ] Adicionar mecânica de temas
+  - [x] Adicionar mecânica de temas
   - [ ] Adicionar texto de ajuda
-  - [ ] Melhorar a exibição de erros
+  - [x] Melhorar a exibição de erros
   - [x] Adicionar mecânica de grid
+  - [ ] Adicionar opções de icones
 - [x] Máscaras
 - [ ] Validações
   - [x] Permitir criar novas regras

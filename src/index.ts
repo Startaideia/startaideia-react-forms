@@ -13,3 +13,6 @@ export { createRule, loadRule } from './packages'
 export { Submit } from './web'
 export { Input } from './web'
 export { Form } from './web'
+
+/* Web Themes */
+export { lightTheme } from './web'
