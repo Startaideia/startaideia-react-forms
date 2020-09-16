@@ -2,7 +2,7 @@
 
 - [ ] Estilo
   - [x] Adicionar mecânica de temas
-  - [ ] Adicionar texto de ajuda
+  - [x] Adicionar texto de ajuda
   - [x] Melhorar a exibição de erros
   - [x] Adicionar mecânica de grid
   - [ ] Adicionar opções de icones

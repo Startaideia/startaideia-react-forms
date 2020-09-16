@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { Col } from 'react-grid-system'
 
 import { applyMask, useValidation, useControl } from 'packages'
-import { Field, Input, Label, Error } from './styles'
+import { Field, Input, Label, Help, Error } from './styles'
 import { parseClassName } from 'web/utils'
 
 function Text({
@@ -19,6 +19,7 @@ function Text({
   onChange = undefined,
   onFocus = undefined,
   onBlur = undefined,
+  help = undefined,
   props,
   ...rest
 }: any) {
@@ -88,6 +89,7 @@ function Text({
           {...props}
         />
         {touched && invalid && <Error className={className}>{error}</Error>}
+        {!(touched && invalid) && help && <Help>{help}</Help>}
       </Field>
     </Col>
   )

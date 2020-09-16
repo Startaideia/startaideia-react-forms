@@ -51,6 +51,18 @@ export default {
       valid: ``,
       touched: ``
     },
+    help: {
+      default: `
+        font-family: "Ubuntu", sans-serif;
+        padding-top: 3px;
+        font-size: 12px;
+        color: #999;
+      `,
+      focus: ``,
+      invalid: ``,
+      valid: ``,
+      touched: ``
+    },
     button: {
       default: `
         border: 1px solid #ccc;

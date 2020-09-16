@@ -16,3 +16,7 @@ export const Label = styled.label`
 export const Error = styled.p`
   ${mountTheme('error')}
 `
+
+export const Help = styled.p`
+  ${mountTheme('help')}
+`
