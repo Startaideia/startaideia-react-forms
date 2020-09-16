@@ -17,6 +17,13 @@ const App = () => {
       />
       <Input.Cpf isRequired />
 
+      <Input.Date
+        label='Data de Nascimento'
+        minAge={{ min: 16, format: 'DD/MM/YYYY' }}
+        maxAge={{ max: 30, format: 'DD/MM/YYYY' }}
+        isRequired
+      />
+
       <Shape path='user'>
         <Input.Email
           help='Será o e-mail utilizado em sua conta'

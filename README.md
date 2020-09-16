@@ -18,13 +18,18 @@
   - [x] Cpf
   - [ ] Cnpj
   - [ ] Telefone
-  - [ ] Data
+  - [x] Data
+  - [ ] Hora
+  - [ ] Data e Hora
   - [ ] Select simples
   - [ ] Select multiplo
   - [ ] Foto de perfil
   - [ ] Foto cropada
   - [ ] Arquivo
   - [ ] Textarea
+  - [ ] Calendario
+  - [ ] Range de datas
+  - [ ] Multiplas datas
   - [ ] Editor wysiwyg
   - [ ] Checkbox
   - [ ] Radiobutton
