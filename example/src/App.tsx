@@ -23,8 +23,8 @@ const App = () => {
           isRequired
           isEmail
         />
-        <Input.Text isRequired xs={6} name='password' label='Senha' />
-        <Input.Text
+        <Input.Password isRequired xs={6} />
+        <Input.Password
           isRequired
           xs={6}
           name='password_confirmation'

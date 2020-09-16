@@ -7,6 +7,7 @@ function Email({ ...props }) {
       name='email'
       placeholder='joe@doe.com'
       label='E-mail'
+      type='email'
       isEmail
       {...props}
     />

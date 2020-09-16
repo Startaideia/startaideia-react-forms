@@ -32,8 +32,13 @@
   - [ ] Endereço
   - [ ] Switch
   - [ ] Dinheiro
-  - [ ] Senha
+  - [x] Senha
   - [ ] Avaliação
   - [ ] Grupo de seleção
   - [ ] Sliders
   - [ ] Toggle button
+- [ ] Internacionalização
+  - [ ] Campos web 100% internacionalizados
+- [ ] Regras de validação
+  - [ ] Matches
+  - [ ] Required If
