@@ -20,3 +20,11 @@ export const Error = styled.p`
 export const Help = styled.p`
   ${mountTheme('help')}
 `
+
+export const Group = styled.div`
+  display: flex;
+`
+
+export const Addon = styled.div`
+  ${mountTheme('addon')}
+`

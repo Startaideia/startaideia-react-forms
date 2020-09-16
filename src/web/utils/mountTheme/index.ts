@@ -16,6 +16,12 @@ export default function (component: string) {
     &.focus {
       ${load(`components.${component}.focus`)({ theme })}
     }
+    &.append {
+      ${load(`components.${component}.append`)({ theme })}
+    }
+    &.prepend {
+      ${load(`components.${component}.prepend`)({ theme })}
+    }
     `
   }
 }

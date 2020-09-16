@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { Col } from 'react-grid-system'
 
 import { applyMask, useValidation, useControl } from 'packages'
-import { Field, Input, Label, Help, Error } from './styles'
+import { Field, Input, Label, Help, Error, Group, Addon } from './styles'
 import { parseClassName } from 'web/utils'
 
 function Text({
@@ -20,6 +20,8 @@ function Text({
   onFocus = undefined,
   onBlur = undefined,
   help = undefined,
+  append = undefined,
+  prepend = undefined,
   props,
   ...rest
 }: any) {
@@ -33,7 +35,7 @@ function Text({
 
   /* Input class name */
   const className = useMemo(
-    () => parseClassName({ valid, focus, touched, invalid }),
+    () => parseClassName({ valid, focus, touched, invalid, append, prepend }),
     [focus, touched, invalid, valid]
   )
 
@@ -79,15 +81,19 @@ function Text({
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
       <Field className={className}>
         {label && <Label className={className}>{label}</Label>}
-        <Input
-          type={type}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          value={value}
-          className={className}
-          {...props}
-        />
+        <Group>
+          {prepend && <Addon className='prepend'>{prepend}</Addon>}
+          <Input
+            type={type}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            value={value}
+            className={className}
+            {...props}
+          />
+          {append && <Addon className='append'>{append}</Addon>}
+        </Group>
         {touched && invalid && <Error className={className}>{error}</Error>}
         {!(touched && invalid) && help && <Help>{help}</Help>}
       </Field>

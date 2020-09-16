@@ -1,6 +1,20 @@
-export default function ({ touched, focus, valid, invalid, append = '' }) {
-  const classNames = [append]
+export default function ({
+  append,
+  touched,
+  focus,
+  valid,
+  prepend,
+  invalid,
+  prefix = ''
+}) {
+  const classNames = [prefix]
 
+  if (append) {
+    classNames.push('append')
+  }
+  if (prepend) {
+    classNames.push('prepend')
+  }
   if (focus) {
     classNames.push('focus')
   }

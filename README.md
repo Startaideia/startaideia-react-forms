@@ -5,7 +5,8 @@
   - [x] Adicionar texto de ajuda
   - [x] Melhorar a exibição de erros
   - [x] Adicionar mecânica de grid
-  - [ ] Adicionar opções de icones
+  - [x] Adicionar opções de icones
+  - [ ] Adicionar variações de temas
 - [x] Máscaras
 - [ ] Validações
   - [x] Permitir criar novas regras

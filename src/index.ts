@@ -15,4 +15,5 @@ export { Input } from './web'
 export { Form } from './web'
 
 /* Web Themes */
+export { defaultTheme } from './web'
 export { lightTheme } from './web'

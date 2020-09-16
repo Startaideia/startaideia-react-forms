@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Form, Input, Shape, Submit } from 'react-forms'
 
+import { FaUser } from 'react-icons/fa'
+
 const App = () => {
   return (
     <Form onSubmit={(data) => console.log(data)}>
@@ -11,6 +13,7 @@ const App = () => {
         minLength={6}
         maxLength={16}
         isRequired
+        append={<FaUser />}
       />
       <Input.Text
         label='CPF'
@@ -19,6 +22,8 @@ const App = () => {
         isCpf
         isRequired
         props={{ maxLength: 14 }}
+        prepend='R$'
+        append=',00'
       />
 
       <Shape path='user'>

@@ -20,6 +20,7 @@
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-forms": "link:..",
+    "react-icons": "^3.11.0",
     "react-scripts": "link:../node_modules/react-scripts",
     "styled-components": "^5.2.0",
     "typescript": "link:../node_modules/typescript"

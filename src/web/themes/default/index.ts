@@ -24,7 +24,15 @@ export default {
       `,
       invalid: ``,
       valid: ``,
-      touched: ``
+      touched: ``,
+      prepend: `
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+      `,
+      append: `
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      `
     },
     label: {
       default: `
@@ -81,6 +89,26 @@ export default {
         &:active {
           transform: scale(1.01);
         }
+      `
+    },
+    addon: {
+      default: `
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #e6e6e6;
+        border: 1px solid #ccc;
+        font-family: 'Ubuntu', sans-serif;
+        max-width: 50px;
+        min-width: 50px;
+      `,
+      prepend: `
+        border-radius: 5px 0px 0px 5px;
+        border-width: 1px 0px 1px 1px;
+      `,
+      append: `
+        border-radius: 0px 5px 5px 0px;
+        border-width: 1px 1px 1px 0px;
       `
     }
   }
