@@ -13,7 +13,7 @@ export default {
     input: {
       default: `
           border: 1px solid #ccc;
-          border-radius: 0px;
+          border-radius: 20px;
           font-size: 16px;
           outline: none;
           padding: 10px;
@@ -76,7 +76,7 @@ export default {
     button: {
       default: `
           border: 1px solid #ccc;
-          border-radius: 5px;
+          border-radius: 20px;
           transition: 0.25s;
           margin-top: 15px;
           font-size: 16px;
@@ -105,9 +105,11 @@ export default {
           min-width: 50px;
         `,
       prepend: `
+          border-radius: 20px 0px 0px 20px;
           border-width: 1px 0px 1px 1px;
         `,
       append: `
+          border-radius: 0px 20px 20px 0px;
           border-width: 1px 1px 1px 0px;
         `
     }

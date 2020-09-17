@@ -1,12 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ThemeProvider } from 'styled-components'
-import { lightTheme } from 'react-forms'
-import App from './App'
+import App from './app'
 
-ReactDOM.render(
-  <ThemeProvider theme={lightTheme}>
-    <App />
-  </ThemeProvider>,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))

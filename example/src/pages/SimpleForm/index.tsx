@@ -1,10 +1,9 @@
 import React from 'react'
 
 import { Form, Input, Shape, Submit } from 'react-forms'
-
 import { FaUser } from 'react-icons/fa'
 
-const App = () => {
+function SimpleForm() {
   return (
     <Form onSubmit={(data) => console.log(data)}>
       <Input.Text
@@ -14,7 +13,9 @@ const App = () => {
         maxLength={16}
         isRequired
         append={<FaUser />}
+        prepend={<FaUser />}
       />
+
       <Input.Cpf isRequired />
 
       <Input.Date
@@ -46,4 +47,4 @@ const App = () => {
   )
 }
 
-export default App
+export default SimpleForm
