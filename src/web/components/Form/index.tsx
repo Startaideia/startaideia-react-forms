@@ -16,7 +16,12 @@ function FormConsumer({ children }) {
   )
 }
 
-function Form({ onSubmit, children, initialValue = {}, ...props }) {
+function Form({
+  onSubmit = undefined,
+  children,
+  initialValue = {},
+  ...props
+}: any) {
   return (
     <FormProvider onSubmit={onSubmit} initialValue={initialValue} {...props}>
       <FormConsumer>{children}</FormConsumer>

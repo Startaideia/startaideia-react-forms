@@ -28,8 +28,8 @@ function Text({
   ...rest
 }: any) {
   const { setValue, value } = useControl(name, { initialValue })
-  const [touched, setTouched] = useState<boolean>(false)
   const { errors, valid, invalid } = useValidation(name, rest)
+  const [touched, setTouched] = useState<boolean>(false)
   const [focus, setFocus] = useState<boolean>(false)
 
   /* First error */

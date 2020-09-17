@@ -28,7 +28,7 @@
   - [ ] Foto de perfil
   - [ ] Foto cropada
   - [ ] Arquivo
-  - [ ] Textarea
+  - [x] Textarea
   - [ ] Calendario
   - [ ] Range de datas
   - [ ] Multiplas datas

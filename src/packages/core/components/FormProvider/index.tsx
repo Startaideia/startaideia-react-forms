@@ -45,7 +45,9 @@ function FormProvider({ onSubmit, initialValue, children }) {
   const handleSubmit = useCallback(
     function (e: FormEvent) {
       if (e) e.preventDefault()
-      onSubmit(formData)
+      if (onSubmit) {
+        onSubmit(formData)
+      }
     },
     [formData]
   )
@@ -55,9 +57,9 @@ function FormProvider({ onSubmit, initialValue, children }) {
       value={{
         path: '',
         initialValue,
-        formData,
         handleSubmit,
         setControl,
+        formData,
         setProps,
         controls
       }}

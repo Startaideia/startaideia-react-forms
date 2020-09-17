@@ -8,13 +8,15 @@ export const Container = styled.div`
 `
 
 export const Aside = styled.div`
+  min-width: 400px;
+  max-width: 400px;
   padding: 20px;
-  width: 400px;
 `
 
 export const Main = styled.div`
   flex-grow: 1;
   height: 100%;
+  width: 100%;
   overflow-y: scroll;
   padding: 50px;
 `
@@ -27,9 +29,10 @@ export const List: any = styled.ul`
 
 List.Item = styled.li`
   font-family: 'Ubuntu', sans-serif;
-  font-size: 18px;
-  padding: 10px 20px;
   border-radius: 40px;
+  padding: 10px 20px;
+  font-size: 18px;
+  display: flex;
 
   &:hover {
     cursor: pointer;
@@ -38,5 +41,6 @@ List.Item = styled.li`
 
   a {
     text-decoration: none;
+    flex-grow: 1;
   }
 `
