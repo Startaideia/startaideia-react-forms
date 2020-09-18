@@ -24,7 +24,7 @@
   - [ ] Hora
   - [ ] Data e Hora
   - [x] Select simples
-  - [ ] Select multiplo
+  - [x] Select multiplo
   - [ ] Foto de perfil
   - [ ] Foto cropada
   - [ ] Arquivo

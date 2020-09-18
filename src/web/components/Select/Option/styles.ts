@@ -10,5 +10,10 @@ export const Item = styled.div`
     cursor: pointer;
   }
 
+  &.selected {
+    background: #2a69ac;
+    color: #fff;
+  }
+
   ${mountTheme('item')}
 `

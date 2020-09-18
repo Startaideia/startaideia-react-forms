@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Col } from 'react-grid-system'
 
 import {
@@ -16,7 +16,7 @@ import { useControl } from 'packages/core'
 import { parseClassName } from 'web/utils'
 import { useValidation } from 'packages'
 
-function Simple({
+function Multiple({
   name,
   label = '',
   initialValue = '',
@@ -34,11 +34,13 @@ function Simple({
   ...rest
 }: any) {
   const { setValue, value } = useControl(name, { initialValue })
+  const [showDropDown, setShowDropDown] = useState<boolean>(false)
   const { errors, valid, invalid } = useValidation(name, rest)
   const [searchString, setSearchString] = useState<string>('')
-  const [selectedItem, setSelectedItem] = useState<any>(null)
+  const [selectedItem, setSelectedItem] = useState<any[]>([])
   const [touched, setTouched] = useState<boolean>(false)
   const [focus, setFocus] = useState<boolean>(false)
+  const inputRef = useRef<any>()
 
   /* First error */
   const error = useMemo(() => errors[0], [errors])
@@ -54,7 +56,7 @@ function Simple({
         append,
         prepend
       }),
-    [valid, invalid, focus, touched, append, prepend]
+    [valid, append, prepend, invalid, focus, touched]
   )
 
   /**
@@ -64,6 +66,7 @@ function Simple({
   const handleFocus = useCallback(
     function () {
       setFocus(true)
+      setShowDropDown(true)
       if (onFocus) onFocus()
     },
     [setFocus]
@@ -92,16 +95,38 @@ function Simple({
       if (focus) {
         return searchString
       }
-      return selectedItem?.label || ''
+      return selectedItem?.map((s) => s.label).join(', ') || ''
     },
     [searchString, selectedItem, focus]
   )
+
+  /**
+   * Handle click outside to close modal
+   *
+   */
+  function handleClickOutside(e) {
+    if (!inputRef?.current?.contains(e.target)) {
+      setShowDropDown(false)
+    }
+  }
+
+  /**
+   * Register click outside event
+   *
+   */
+  useEffect(function () {
+    document.addEventListener('mousedown', handleClickOutside)
+    return function () {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
     <SelectProvider
       value={{
         setSelectedItem,
         setSearchString,
+        multiple: true,
         selectedItem,
         searchString,
         setValue,
@@ -109,7 +134,7 @@ function Simple({
       }}
     >
       <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-        <Field className={className}>
+        <Field className={className} ref={inputRef}>
           {label && <Label className={className}>{label}</Label>}
           <Group>
             {prepend && <Addon className='prepend'>{prepend}</Addon>}
@@ -122,7 +147,7 @@ function Simple({
             />
             {append && <Addon className='append'>{append}</Addon>}
           </Group>
-          <Dropdown className={`${className} ${focus && 'visible'}`}>
+          <Dropdown className={`${className} ${showDropDown && 'visible'}`}>
             {children}
           </Dropdown>
           {touched && invalid && <Error className={className}>{error}</Error>}
@@ -133,4 +158,4 @@ function Simple({
   )
 }
 
-export default Simple as any
+export default Multiple as any

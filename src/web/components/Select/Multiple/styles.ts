@@ -27,6 +27,8 @@ export const Dropdown = styled.ul`
   position: absolute;
   z-index: 1;
   width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
   ${mountTheme('dropdown')}
 `
 
