@@ -9,6 +9,7 @@ function EditorForm() {
         label='Comentário'
         help='Deixe seu comentário'
         props={{ rows: 20 }}
+        initialValue='O que você achou?'
         isRequired
       />
     </Form>

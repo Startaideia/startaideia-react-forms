@@ -23,7 +23,7 @@
   - [x] Data
   - [ ] Hora
   - [ ] Data e Hora
-  - [ ] Select simples
+  - [x] Select simples
   - [ ] Select multiplo
   - [ ] Foto de perfil
   - [ ] Foto cropada
@@ -44,6 +44,7 @@
   - [ ] Grupo de seleção
   - [ ] Sliders
   - [ ] Toggle button
+  - [ ] Editor MD
 - [ ] Internacionalização
   - [ ] Campos web 100% internacionalizados
 - [ ] Regras de validação

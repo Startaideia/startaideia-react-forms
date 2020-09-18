@@ -110,6 +110,17 @@ export default {
         border-radius: 0px 5px 5px 0px;
         border-width: 1px 1px 1px 0px;
       `
+    },
+    dropdown: {
+      default: `
+        border: 1px solid #ccc;
+        visibility: hidden;
+        background: #fff;
+      
+        &.visible {
+          visibility: visible;
+        }
+      `
     }
   }
 }
