@@ -17,7 +17,7 @@ export default function (name: string, { initialValue = '' } = {}) {
 
   /* Set the form control value */
   const setValue = useCallback(
-    function (value: string) {
+    function (value) {
       params.setProps(path, value, 'value')
     },
     [path]

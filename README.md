@@ -33,15 +33,15 @@
   - [ ] Range de datas
   - [ ] Multiplas datas
   - [ ] Editor wysiwyg
-  - [ ] Checkbox
-  - [ ] Radiobutton
+  - [x] Checkbox
+  - [x] Radiobutton
   - [ ] Cep
   - [ ] Endereço
   - [ ] Switch
   - [ ] Dinheiro
   - [x] Senha
   - [ ] Avaliação
-  - [ ] Grupo de seleção
+  - [x] Grupo de seleção
   - [ ] Sliders
   - [ ] Toggle button
   - [ ] Editor MD

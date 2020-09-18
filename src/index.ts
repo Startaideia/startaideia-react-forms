@@ -10,7 +10,7 @@ export { default as config } from './packages/config'
 export { createRule, loadRule } from './packages'
 
 /* Web Components */
-export { Input, Editor, Select } from './web'
+export { Input, Editor, Select, Group } from './web'
 export { Submit } from './web'
 export { Form } from './web'
 
