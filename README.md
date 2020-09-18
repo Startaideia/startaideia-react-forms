@@ -27,7 +27,7 @@
   - [x] Select multiplo
   - [ ] Foto de perfil
   - [ ] Foto cropada
-  - [ ] Arquivo
+  - [ ] Arquivos
   - [x] Textarea
   - [ ] Calendario
   - [ ] Range de datas
@@ -37,7 +37,7 @@
   - [x] Radiobutton
   - [ ] Cep
   - [ ] Endereço
-  - [ ] Switch
+  - [x] Switch
   - [ ] Dinheiro
   - [x] Senha
   - [ ] Avaliação

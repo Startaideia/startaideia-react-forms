@@ -1,9 +1,10 @@
 import React from 'react'
-import { Form, Group, Input, Submit } from 'react-forms'
+import { Form, Group, Submit } from 'react-forms'
 
 function GroupForm() {
   return (
     <React.Fragment>
+      <h2>Radio Button</h2>
       <Form onSubmit={(values) => console.log(values)}>
         <Group
           name='category'
@@ -20,6 +21,7 @@ function GroupForm() {
         </Form.Footer>
       </Form>
 
+      <h2>Checkbox</h2>
       <Form onSubmit={(values) => console.log(values)}>
         <Group
           name='gender'
@@ -36,6 +38,7 @@ function GroupForm() {
         </Form.Footer>
       </Form>
 
+      <h2>Multiplos checkbox</h2>
       <Form onSubmit={(values) => console.log(values)}>
         <Group
           name='skills'
@@ -53,12 +56,10 @@ function GroupForm() {
         </Form.Footer>
       </Form>
 
-      <h2>Login form</h2>
+      <h2>Switch</h2>
       <Form onSubmit={(values) => console.log(values)}>
-        <Input.Email isRequired />
-        <Input.Password />
         <Group name='terms_and_conditions' isRequired>
-          <Group.Radio
+          <Group.Switch
             value='on'
             label='Declaro que li os termos e condições'
           />

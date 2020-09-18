@@ -56,7 +56,7 @@ function Container({
           return setValue([...value, itemValue])
         }
       }
-      return setValue(itemValue)
+      return value === itemValue ? setValue('') : setValue(itemValue)
     },
     [setValue, value]
   )
