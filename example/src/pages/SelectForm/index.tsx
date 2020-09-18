@@ -55,7 +55,9 @@ function SelectForm() {
             help='Você não precisa se identificar com a opção selecionada'
           >
             {data.map(({ label, value }) => (
-              <Select.Option key={value} label={label} value={value} />
+              <Select.Option key={value} value={value}>
+                <a href='https://google.com.br'>{label}</a>
+              </Select.Option>
             ))}
           </Select>
         </Shape>

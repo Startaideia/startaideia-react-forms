@@ -6,7 +6,7 @@ import SelectContext from 'web/providers/SelectProvider/context'
 import { Item } from './styles'
 import { unionBy } from 'lodash'
 
-function Option({ value: optionValue, label }) {
+function Option({ value: optionValue, label, children = undefined }) {
   const params = useContext(SelectContext)
   const { setSelectedItem } = params
   const { searchString } = params
@@ -20,6 +20,9 @@ function Option({ value: optionValue, label }) {
    */
   const display = useMemo(
     function () {
+      if (!label) {
+        return true
+      }
       return label.toLowerCase().indexOf(searchString.toLowerCase()) !== -1
     },
     [label, searchString]
@@ -93,7 +96,7 @@ function Option({ value: optionValue, label }) {
 
   return display ? (
     <Item className={`${selected && 'selected'}`} onMouseDown={handleSelection}>
-      {label}
+      {children || label}
     </Item>
   ) : null
 }
