@@ -5,45 +5,55 @@ import { FaUser } from 'react-icons/fa'
 
 function SimpleForm() {
   return (
-    <Form onSubmit={(data) => console.log(data)}>
-      <Input.Text
-        label='Nome'
-        name='name'
-        minLength={6}
-        maxLength={16}
-        isRequired
-        append={<FaUser />}
-        prepend={<FaUser />}
-      />
-
-      <Input.Cpf isRequired />
-
-      <Input.Date
-        label='Data de Nascimento'
-        minAge={{ min: 16, format: 'DD/MM/YYYY' }}
-        maxAge={{ max: 30, format: 'DD/MM/YYYY' }}
-        isRequired
-      />
-
-      <Shape path='user'>
-        <Input.Email
-          help='Será o e-mail utilizado em sua conta'
+    <React.Fragment>
+      <Form onSubmit={(data) => console.log(data)}>
+        <Input.Text
+          label='Nome'
+          name='name'
+          minLength={6}
+          maxLength={16}
           isRequired
-          isEmail
+          append={<FaUser />}
+          prepend={<FaUser />}
         />
-        <Input.Password isRequired xs={6} />
-        <Input.Password
-          isRequired
-          xs={6}
-          name='password_confirmation'
-          label='Confirme a senha'
-        />
-      </Shape>
 
-      <Form.Footer>
-        <Submit>Submit</Submit>
-      </Form.Footer>
-    </Form>
+        <Input.Cpf isRequired />
+
+        <Input.Date
+          label='Data de Nascimento'
+          minAge={{ min: 16, format: 'DD/MM/YYYY' }}
+          maxAge={{ max: 30, format: 'DD/MM/YYYY' }}
+          isRequired
+        />
+
+        <Shape path='user'>
+          <Input.Email
+            help='Será o e-mail utilizado em sua conta'
+            isRequired
+            isEmail
+          />
+          <Input.Password isRequired xs={6} />
+          <Input.Password
+            isRequired
+            xs={6}
+            name='password_confirmation'
+            label='Confirme a senha'
+          />
+        </Shape>
+
+        <Form.Footer>
+          <Submit>Submit</Submit>
+        </Form.Footer>
+      </Form>
+
+      <h2>Endereço</h2>
+      <Form>
+        <Input.Cep />
+        <Form.Footer>
+          <Submit>Entrar</Submit>
+        </Form.Footer>
+      </Form>
+    </React.Fragment>
   )
 }
 

@@ -35,7 +35,7 @@
   - [ ] Editor wysiwyg
   - [x] Checkbox
   - [x] Radiobutton
-  - [ ] Cep
+  - [x] Cep
   - [ ] Endereço
   - [x] Switch
   - [ ] Dinheiro
@@ -45,6 +45,7 @@
   - [ ] Sliders
   - [ ] Toggle button
   - [ ] Editor MD
+  - [ ] Range
 - [ ] Internacionalização
   - [ ] Campos web 100% internacionalizados
 - [ ] Regras de validação
