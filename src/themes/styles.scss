@@ -1,5 +1,7 @@
+@import './variables';
+
 .stf-default-theme {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: var(--stf-font-family);
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
@@ -16,8 +18,11 @@
 
   /* Button */
   .stf-form-button {
-    border: 1px solid #ccc;
+    border: 1px solid var(--stf-blue-500);
+    background: var(--stf-blue-500);
+    color: var(--stf-white);
     border-radius: 5px;
+    font-weight: bold;
     transition: 0.25s;
     margin-top: 15px;
     font-size: 16px;
@@ -32,6 +37,10 @@
     &:active {
       transform: scale(1.01);
     }
+
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 
   /* Form group styles */
@@ -44,7 +53,8 @@
 
   /* Form control styles */
   .stf-form-control {
-    border: 1px solid #ccc;
+    border: 1px solid var(--stf-gray-100);
+    box-sizing: border-box;
     border-radius: 5px;
     font-size: 16px;
     outline: none;
@@ -52,8 +62,12 @@
     resize: none;
     width: 100%;
 
+    &.invalid {
+      color: var(--stf-red-500);
+    }
+
     &.focus {
-      border: 2px solid #4299e1;
+      border: 1px solid var(--stf-blue-500);
     }
 
     &.prepend {
@@ -69,40 +83,39 @@
 
   /* Label styles */
   .stf-form-label {
-    font-family: 'Ubuntu', sans-serif;
+    color: var(--stf-gray-800);
     display: block;
 
     &.invalid {
-      color: #e53e3e;
+      color: var(--stf-red-500);
     }
   }
 
   /* Form control message */
   .stf-form-text {
-    font-family: 'Ubuntu', sans-serif;
     padding: 10px 0px;
     font-size: 12px;
     display: block;
 
     &.stf-text-muted {
-      color: #999;
+      color: var(--stf-gray-500);
     }
 
     &.stf-text-invalid {
-      color: #e53e3e;
+      color: var(--stf-red-500);
     }
   }
 
   /* Form group addons */
   .stf-form-addon {
-    display: flex;
-    align-items: center;
+    border: 1px solid var(--stf-gray-200);
+    background: var(--stf-gray-50);
+    color: var(--stf-gray-700);
     justify-content: center;
-    background: #e6e6e6;
-    border: 1px solid #ccc;
-    font-family: 'Ubuntu', sans-serif;
+    align-items: center;
     max-width: 50px;
     min-width: 50px;
+    display: flex;
 
     &.prepend {
       border-radius: 5px 0px 0px 5px;
@@ -117,10 +130,10 @@
 
   /* Dropdowns */
   .stf-dropdown {
-    border: 1px solid #ccc;
+    border: 1px solid var(--stf-gray-200);
+    background: var(--stf-white);
     position: absolute;
     visibility: hidden;
-    background: #fff;
     overflow-y: scroll;
     max-height: 300px;
     width: 100%;
@@ -133,26 +146,25 @@
 
   /* Select items */
   .stf-dropdown-item {
-    font-family: 'Ubuntu', sans-serif;
     align-items: center;
     padding: 5px 0px;
     display: flex;
     padding: 10px;
 
     &:hover {
-      background: #e6e6e6;
+      background: var(--stf-gray-50);
       cursor: pointer;
     }
 
     &.selected {
-      background: #2a69ac;
-      color: #fff;
+      background: var(--stf-blue-300);
+      color: var(--stf-white);
     }
   }
 
   /* Radio button */
   .stf-radio {
-    border: 1px solid #999;
+    border: 1px solid var(--stf-gray-500);
     border-radius: 50%;
     margin-right: 8px;
     height: 15px;
@@ -160,16 +172,16 @@
     padding: 1px;
 
     .filled {
+      background: var(--stf-blue-500);
       border-radius: 50%;
-      background: #777;
-      height: 11px;
-      width: 11px;
+      height: 100%;
+      width: 100%;
     }
   }
 
   /* Checkbox */
   .stf-checkbox {
-    border: 1px solid #999;
+    border: 1px solid var(--stf-gray-500);
     border-radius: 2px;
     margin-right: 8px;
     padding: 1px;
@@ -177,31 +189,36 @@
     width: 15px;
 
     .filled {
+      background: var(--stf-blue-500);
       border-radius: 2px;
-      background: #777;
-      height: 11px;
-      width: 11px;
+      height: 100%;
+      width: 100%;
     }
   }
 
   /* Switch */
   .stf-switch {
-    border: 1px solid #999;
+    border: 1px solid var(--stf-gray-500);
     border-radius: 15px;
     position: relative;
     margin-right: 8px;
+    transition: 0.25s;
     height: 15px;
-    width: 30px;
     padding: 1px;
+    width: 30px;
+
+    &.actived {
+      background: var(--stf-blue-500);
+    }
 
     .pill {
-      border: 1px solid #999;
+      border: 1px solid var(--stf-gray-500);
+      background: var(--stf-gray-50);
+      height: calc(100% - 4px);
       border-radius: 50%;
       position: absolute;
-      background: #777;
       transition: 0.25s;
-      height: 11px;
-      width: 11px;
+      width: 14px;
       left: 1px;
 
       &.actived {

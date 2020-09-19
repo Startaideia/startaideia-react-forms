@@ -1,27 +1,31 @@
 import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, useHistory } from 'react-router-dom'
 
 import { Container, Aside, Main, List } from './styles'
 import { SimpleForm, EditorForm, SelectForm } from '../pages'
 import GroupForm from '../pages/GroupForm'
 
 function Routes() {
+  const history = useHistory()
+
+  function handleNavigate(path: string) {
+    return function () {
+      history.push(path)
+    }
+  }
+
   return (
     <Container>
       <Aside>
         <List>
-          <List.Item>
-            <Link to='/'>Formulário Simples</Link>
+          <List.Item onClick={handleNavigate('/')}>
+            Formulário Simples
           </List.Item>
-          <List.Item>
-            <Link to='/editores'>Editores</Link>
+          <List.Item onClick={handleNavigate('/editores')}>Editores</List.Item>
+          <List.Item onClick={handleNavigate('/seletores')}>
+            Seletores
           </List.Item>
-          <List.Item>
-            <Link to='/seletores'>Seletores</Link>
-          </List.Item>
-          <List.Item>
-            <Link to='/grupos'>Grupos</Link>
-          </List.Item>
+          <List.Item onClick={handleNavigate('/grupos')}>Grupos</List.Item>
         </List>
       </Aside>
       <Main>

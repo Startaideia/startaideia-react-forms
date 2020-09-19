@@ -3,11 +3,15 @@ import { Container, Row, Col } from 'react-grid-system'
 
 import { FormProvider, FormContext } from 'packages/core'
 
-function FormConsumer({ children }) {
+function FormConsumer({ theme = '', className = '', children, ...props }) {
   const { handleSubmit } = useContext(FormContext)
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className={`stf-default-theme ${theme} ${className}`}
+      onSubmit={handleSubmit}
+      {...props}
+    >
       <Container>
         <Row>{children}</Row>
       </Container>

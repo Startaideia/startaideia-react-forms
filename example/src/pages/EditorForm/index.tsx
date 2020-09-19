@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Form, Editor } from 'react-forms'
+import { Submit, Form, Editor } from 'react-forms'
 
 function EditorForm() {
   return (
@@ -12,6 +12,9 @@ function EditorForm() {
         initialValue='O que você achou?'
         isRequired
       />
+      <Form.Footer>
+        <Submit>Enviar</Submit>
+      </Form.Footer>
     </Form>
   )
 }

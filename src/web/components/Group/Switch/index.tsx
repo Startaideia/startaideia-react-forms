@@ -9,7 +9,7 @@ function Switch({ label = '', value, children = undefined }) {
   return (
     <Item value={value}>
       <div className='stf-dropdown-item'>
-        <div className='stf-switch'>
+        <div className={`stf-switch ${isSelected && 'actived'}`}>
           <div className={`${isSelected && 'actived'} pill`} />
         </div>
         {children || label}
