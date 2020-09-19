@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { Col } from 'react-grid-system'
 
-import { Input, Field, Label, Help, Error } from './styles'
 import { useValidation } from 'packages/schema'
 import { parseClassName } from 'web/utils'
 import { useControl } from 'packages/core'
@@ -83,22 +82,32 @@ function TextArea({
 
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-      <Field>
-        {label && <Label className={className}>{label}</Label>}
-        {touched && invalid && <Error className={className}>{error}</Error>}
-        {!(touched && invalid) && help && <Help>{help}</Help>}
-        <Input
-          onBlur={handleBlur}
+      <div className={`stf-form-group ${className}`}>
+        {label && (
+          <label className={`stf-form-label ${className}`}>{label}</label>
+        )}
+        {touched && invalid && (
+          <span className={`stf-form-text stf-text-invalid ${className}`}>
+            {error}
+          </span>
+        )}
+        {!(touched && invalid) && help && (
+          <span className={`stf-form-text stf-text-muted ${className}`}>
+            {help}
+          </span>
+        )}
+        <textarea
+          className={`stf-form-control ${className}`}
+          placeholder={placeholder}
           onChange={handleChange}
           onFocus={handleFocus}
+          onBlur={handleBlur}
           value={value}
-          className={className}
-          placeholder={placeholder}
           {...props}
         >
           {value}
-        </Input>
-      </Field>
+        </textarea>
+      </div>
     </Col>
   )
 }

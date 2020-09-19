@@ -1,11 +1,14 @@
 import React from 'react'
 
 import { useFormValidation } from 'packages'
-import { Button } from './styles'
 
 function Submit({ children }) {
   const { isValid } = useFormValidation()
-  return <Button disabled={!isValid}>{children}</Button>
+  return (
+    <button className='stf-form-button' type='submit' disabled={!isValid}>
+      {children}
+    </button>
+  )
 }
 
 export default Submit

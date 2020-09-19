@@ -1,16 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Col } from 'react-grid-system'
 
-import {
-  Dropdown,
-  Field,
-  Input,
-  Label,
-  Help,
-  Error,
-  Group,
-  Addon
-} from './styles'
 import { SelectProvider } from 'web/providers'
 import { useControl } from 'packages/core'
 import { parseClassName } from 'web/utils'
@@ -20,17 +10,17 @@ function Multiple({
   name,
   label = '',
   initialValue = '',
-  xs = 12,
   sm = undefined,
   md = undefined,
   lg = undefined,
   xl = undefined,
+  xs = 12,
+  prepend = undefined,
   onFocus = undefined,
   onBlur = undefined,
-  children,
   append = undefined,
-  prepend = undefined,
   help = undefined,
+  children,
   ...rest
 }: any) {
   const { setValue, value } = useControl(name, { initialValue })
@@ -134,25 +124,39 @@ function Multiple({
       }}
     >
       <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-        <Field className={className} ref={inputRef}>
-          {label && <Label className={className}>{label}</Label>}
-          <Group>
-            {prepend && <Addon className='prepend'>{prepend}</Addon>}
-            <Input
-              className={className}
+        <div className={`stf-form-group ${className}`} ref={inputRef}>
+          {label && (
+            <label className={`stf-form-label ${className}`}>{label}</label>
+          )}
+          <div className='stf-flex'>
+            {prepend && <div className='stf-form-addon prepend'>{prepend}</div>}
+            <input
+              onChange={(e) => setSearchString(e.target.value)}
+              className={`stf-form-control ${className}`}
               onFocus={handleFocus}
               onBlur={handleBlur}
-              onChange={(e) => setSearchString(e.target.value)}
               value={inputValue}
             />
-            {append && <Addon className='append'>{append}</Addon>}
-          </Group>
-          <Dropdown className={`${className} ${showDropDown && 'visible'}`}>
+            {append && <div className='stf-form-addon  append'>{append}</div>}
+          </div>
+          <div
+            className={`stf-dropdown  ${className} ${
+              showDropDown && 'visible'
+            }`}
+          >
             {children}
-          </Dropdown>
-          {touched && invalid && <Error className={className}>{error}</Error>}
-          {!(touched && invalid) && help && <Help>{help}</Help>}
-        </Field>
+          </div>
+          {touched && invalid && (
+            <span className={`stf-form-text stf-text-invalid ${className}`}>
+              {error}
+            </span>
+          )}
+          {!(touched && invalid) && help && (
+            <span className={`stf-form-text stf-text-muted ${className}`}>
+              {help}
+            </span>
+          )}
+        </div>
       </Col>
     </SelectProvider>
   )

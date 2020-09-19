@@ -1,18 +1,19 @@
 import React from 'react'
 
-import { Container, Circle } from './styles'
-import Item from '../Item'
 import { useGroup } from 'web/hooks'
+import Item from '../Item'
 
 function Radio({ label = '', value, children = undefined }) {
   const { isSelected } = useGroup(value)
 
   return (
     <Item value={value}>
-      <Container>
-        <Circle>{isSelected && <div className='filled' />}</Circle>
+      <div className='stf-dropdown-item'>
+        <div className='stf-radio'>
+          {isSelected && <div className='filled' />}
+        </div>
         {children || label}
-      </Container>
+      </div>
     </Item>
   )
 }

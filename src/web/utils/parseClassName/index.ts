@@ -1,12 +1,12 @@
 export default function ({
-  append,
-  touched,
-  focus,
-  valid,
-  prepend,
-  invalid,
+  touched = undefined,
+  prepend = undefined,
+  invalid = undefined,
+  append = undefined,
+  focus = undefined,
+  valid = undefined,
   prefix = ''
-}) {
+}: any) {
   const classNames = [prefix]
 
   if (append) {

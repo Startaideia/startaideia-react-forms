@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Container, Circle } from './styles'
 import { useGroup } from 'web/hooks'
 import Item from '../Item'
 
@@ -9,12 +8,12 @@ function Switch({ label = '', value, children = undefined }) {
 
   return (
     <Item value={value}>
-      <Container>
-        <Circle>
+      <div className='stf-dropdown-item'>
+        <div className='stf-switch'>
           <div className={`${isSelected && 'actived'} pill`} />
-        </Circle>
+        </div>
         {children || label}
-      </Container>
+      </div>
     </Item>
   )
 }

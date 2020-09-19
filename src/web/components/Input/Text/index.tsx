@@ -2,7 +2,6 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { Col } from 'react-grid-system'
 
 import { applyMask, useValidation, useControl } from 'packages'
-import { Field, Input, Label, Help, Error, Group, Addon } from './styles'
 import { parseClassName } from 'web/utils'
 
 function Text({
@@ -81,26 +80,36 @@ function Text({
 
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-      <Field className={className}>
-        {label && <Label className={className}>{label}</Label>}
-        <Group>
-          {prepend && <Addon className='prepend'>{prepend}</Addon>}
-          <Input
-            type={type}
-            onBlur={handleBlur}
+      <div className={`stf-form-group ${className}`}>
+        {label && (
+          <label className={`stf-form-label ${className}`}>{label}</label>
+        )}
+        <div className='stf-flex'>
+          {prepend && <div className='stf-form-addon prepend'>{prepend}</div>}
+          <input
+            className={`stf-form-control ${className}`}
+            placeholder={placeholder}
+            inputMode={inputmode}
             onChange={handleChange}
             onFocus={handleFocus}
+            onBlur={handleBlur}
             value={value}
-            className={className}
-            placeholder={placeholder}
-            inputmode={inputmode}
+            type={type}
             {...props}
           />
-          {append && <Addon className='append'>{append}</Addon>}
-        </Group>
-        {touched && invalid && <Error className={className}>{error}</Error>}
-        {!(touched && invalid) && help && <Help>{help}</Help>}
-      </Field>
+          {append && <div className='stf-form-addon  append'>{append}</div>}
+        </div>
+        {touched && invalid && (
+          <span className={`stf-form-text stf-text-invalid ${className}`}>
+            {error}
+          </span>
+        )}
+        {!(touched && invalid) && help && (
+          <span className={`stf-form-text stf-text-muted ${className}`}>
+            {help}
+          </span>
+        )}
+      </div>
     </Col>
   )
 }

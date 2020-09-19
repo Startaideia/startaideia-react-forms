@@ -1,9 +1,8 @@
 import { useControl, useValidation } from 'packages'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Col } from 'react-grid-system'
 import remove from 'lodash/remove'
 
-import { Field, Label, Flex, Error, Help } from './styles'
 import { GroupProvider } from 'web/providers'
 import { parseClassName } from 'web/utils'
 
@@ -11,19 +10,20 @@ function Container({
   name,
   label = '',
   initialValue = '',
-  xs = 12,
   sm = undefined,
   md = undefined,
   lg = undefined,
   xl = undefined,
-  children,
+  xs = 12,
   help = undefined,
   multiple = false,
+  children,
   ...rest
 }) {
   const { setValue, value } = useControl(name, { initialValue })
   const { errors, valid, invalid } = useValidation(name, rest)
   const [touched, setTouched] = useState<boolean>(false)
+  const mounted = useRef<boolean>()
 
   /* First error */
   const error = useMemo(() => errors[0], [errors])
@@ -48,7 +48,6 @@ function Container({
    */
   const handleSelection = useCallback(
     function (itemValue) {
-      setTouched(true)
       if (multiple) {
         if (value.indexOf(itemValue) !== -1) {
           return setValue(remove([...value], (v) => v !== itemValue))
@@ -59,6 +58,21 @@ function Container({
       return value === itemValue ? setValue('') : setValue(itemValue)
     },
     [setValue, value]
+  )
+
+  /**
+   * Handle touched attribute
+   *
+   */
+  useEffect(
+    function () {
+      if (mounted.current) {
+        setTouched(true)
+        return
+      }
+      mounted.current = true
+    },
+    [value]
   )
 
   /**
@@ -78,12 +92,22 @@ function Container({
   return (
     <GroupProvider value={{ handleSelection, isSelected, multiple }}>
       <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-        <Field className={className}>
-          {label && <Label className={className}>{label}</Label>}
-          {touched && invalid && <Error className={className}>{error}</Error>}
-          {!(touched && invalid) && help && <Help>{help}</Help>}
-          <Flex>{children}</Flex>
-        </Field>
+        <div className={`stf-form-group ${className}`}>
+          {label && (
+            <label className={`stf-form-label ${className}`}>{label}</label>
+          )}
+          {touched && invalid && (
+            <span className={`stf-form-text stf-text-invalid ${className}`}>
+              {error}
+            </span>
+          )}
+          {!(touched && invalid) && help && (
+            <span className={`stf-form-text stf-text-muted ${className}`}>
+              {help}
+            </span>
+          )}
+          <div className='stf-flex stf-flex-column'>{children}</div>
+        </div>
       </Col>
     </GroupProvider>
   )

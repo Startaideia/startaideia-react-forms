@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useMemo } from 'react'
-// import unionBy from 'lodash/unionBy'
 import remove from 'lodash/remove'
 
 import SelectContext from 'web/providers/SelectProvider/context'
-import { Item } from './styles'
 import { unionBy } from 'lodash'
 
 function Option({ value: optionValue, label, children = undefined }) {
@@ -95,9 +93,12 @@ function Option({ value: optionValue, label, children = undefined }) {
   )
 
   return display ? (
-    <Item className={`${selected && 'selected'}`} onMouseDown={handleSelection}>
+    <div
+      className={`stf-dropdown-item ${selected && 'selected'}`}
+      onMouseDown={handleSelection}
+    >
       {children || label}
-    </Item>
+    </div>
   ) : null
 }
 

@@ -1,3 +1,5 @@
+import './themes/styles.scss'
+
 /* Hooks */
 export { useControl } from './packages/core'
 
@@ -15,5 +17,4 @@ export { Submit } from './web'
 export { Form } from './web'
 
 /* Web Themes */
-export { defaultTheme } from './web'
-export { lightTheme } from './web'
+export { parseClassName } from './web'

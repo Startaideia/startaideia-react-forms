@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { Container, Row, Col } from 'react-grid-system'
 
 import { FormProvider, FormContext } from 'packages/core'
-import { GlobalStyle } from './styles'
 
 function FormConsumer({ children }) {
   const { handleSubmit } = useContext(FormContext)
@@ -25,7 +24,6 @@ function Form({
   return (
     <FormProvider onSubmit={onSubmit} initialValue={initialValue} {...props}>
       <FormConsumer>{children}</FormConsumer>
-      <GlobalStyle />
     </FormProvider>
   )
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Container, Circle } from './styles'
 import { useGroup } from 'web/hooks'
 import Item from '../Item'
 
@@ -9,10 +8,12 @@ function Checkbox({ label = '', value, children = undefined }) {
 
   return (
     <Item value={value}>
-      <Container>
-        <Circle>{isSelected && <div className='filled' />}</Circle>
+      <div className='stf-dropdown-item'>
+        <div className='stf-checkbox'>
+          {isSelected && <div className='filled' />}
+        </div>
         {children || label}
-      </Container>
+      </div>
     </Item>
   )
 }
