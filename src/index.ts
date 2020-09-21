@@ -2,6 +2,7 @@ import './themes/styles.scss'
 
 /* Hooks */
 export { useControl } from './packages/core'
+export { useGroup } from './web'
 
 /* Core Components */
 export { FormProvider } from './packages/core'

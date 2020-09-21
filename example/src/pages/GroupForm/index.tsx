@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Group, Submit } from 'react-forms'
+import { Form, Group, Submit } from '@startaideia/react-forms'
 
 function GroupForm() {
   return (

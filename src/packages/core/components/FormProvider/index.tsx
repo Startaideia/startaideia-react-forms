@@ -43,10 +43,13 @@ function FormProvider({ onSubmit, initialValue, children }) {
 
   /* Handle form submit */
   const handleSubmit = useCallback(
-    function (e: FormEvent) {
+    async function (e: FormEvent) {
       if (e) e.preventDefault()
       if (onSubmit) {
-        onSubmit(formData)
+        const callback = await onSubmit(formData)
+        if (callback) {
+          callback()
+        }
       }
     },
     [formData]

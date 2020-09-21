@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { Form, Input, Shape, Submit } from 'react-forms'
+import { Form, Input, Shape, Submit } from '@startaideia/react-forms'
 import { FaUser } from 'react-icons/fa'
 
 function SimpleForm() {
   return (
     <React.Fragment>
-      <Form onSubmit={(data) => console.log(data)}>
+      <Form theme='dark' onSubmit={(data) => console.log(data)}>
         <Input.Text
           label='Nome'
           name='name'

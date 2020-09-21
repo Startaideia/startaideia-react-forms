@@ -3,14 +3,13 @@ import { Container, Row, Col } from 'react-grid-system'
 
 import { FormProvider, FormContext } from 'packages/core'
 
-function FormConsumer({ theme = '', className = '', children, ...props }) {
+function FormConsumer({ theme = '', className = '', children }) {
   const { handleSubmit } = useContext(FormContext)
 
   return (
     <form
       className={`stf-default-theme ${theme} ${className}`}
       onSubmit={handleSubmit}
-      {...props}
     >
       <Container>
         <Row>{children}</Row>
@@ -21,13 +20,17 @@ function FormConsumer({ theme = '', className = '', children, ...props }) {
 
 function Form({
   onSubmit = undefined,
-  children,
   initialValue = {},
+  className = '',
+  theme = '',
+  children,
   ...props
 }: any) {
   return (
     <FormProvider onSubmit={onSubmit} initialValue={initialValue} {...props}>
-      <FormConsumer>{children}</FormConsumer>
+      <FormConsumer theme={theme} className={className}>
+        {children}
+      </FormConsumer>
     </FormProvider>
   )
 }

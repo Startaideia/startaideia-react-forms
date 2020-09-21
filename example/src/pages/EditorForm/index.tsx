@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Submit, Form, Editor } from 'react-forms'
+import { Submit, Form, Editor } from '@startaideia/react-forms'
 
 function EditorForm() {
   return (

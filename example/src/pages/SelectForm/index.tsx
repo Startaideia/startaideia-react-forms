@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Select, Shape, Submit } from 'react-forms'
+import { Form, Select, Shape, Submit } from '@startaideia/react-forms'
 import { FaUser } from 'react-icons/fa'
 
 const data = [
