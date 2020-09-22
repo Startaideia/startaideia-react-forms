@@ -19,6 +19,8 @@ function SimpleForm() {
 
         <Input.Cpf isRequired />
 
+        <Input.Hidden name='hidden' initialValue={2} />
+
         <Input.Date
           label='Data de Nascimento'
           minAge={{ min: 16, format: 'DD/MM/YYYY' }}
