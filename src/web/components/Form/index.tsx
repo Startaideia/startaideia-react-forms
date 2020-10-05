@@ -1,10 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Container, Row, Col } from 'react-grid-system'
 
 import { FormProvider, FormContext } from 'packages/core'
 
-function FormConsumer({ theme = '', className = '', children }) {
-  const { handleSubmit } = useContext(FormContext)
+function FormConsumer({ theme = '', className = '', onChange, children }) {
+  const { formData, handleSubmit } = useContext(FormContext)
+
+  /* Handle formData chage */
+  useEffect(
+    function () {
+      if (onChange) {
+        onChange(formData)
+      }
+    },
+    [onChange, formData]
+  )
 
   return (
     <form
@@ -20,6 +30,7 @@ function FormConsumer({ theme = '', className = '', children }) {
 
 function Form({
   onSubmit = undefined,
+  onChange = undefined,
   initialValue = {},
   className = '',
   theme = '',
@@ -28,7 +39,7 @@ function Form({
 }: any) {
   return (
     <FormProvider onSubmit={onSubmit} initialValue={initialValue} {...props}>
-      <FormConsumer theme={theme} className={className}>
+      <FormConsumer theme={theme} className={className} onChange={onChange}>
         {children}
       </FormConsumer>
     </FormProvider>
