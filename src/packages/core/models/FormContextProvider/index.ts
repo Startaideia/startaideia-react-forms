@@ -6,6 +6,7 @@ export default interface FormControlProvider {
   initialValue: { [x: string]: string }
   formData: { [x: string]: string }
   setControl: (control: FormControl) => void
+  removeControl: (name: string) => void
   setProps: (name: string, value: any, key: string) => void
   handleSubmit: (e: FormEvent) => void
   controls: FormControl[]

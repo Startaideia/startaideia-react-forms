@@ -3,6 +3,7 @@ import React, { FormEvent, useCallback, useMemo, useState } from 'react'
 import { FormContext } from 'packages/core/providers'
 import { FormControl } from 'packages/core/models'
 import unionBy from 'lodash/unionBy'
+import remove from 'lodash/remove'
 import set from 'lodash/set'
 
 function FormProvider({ onSubmit, initialValue, children }) {
@@ -13,6 +14,16 @@ function FormProvider({ onSubmit, initialValue, children }) {
     function (control: FormControl) {
       setControls(function (previousControls) {
         return [...previousControls, control]
+      })
+    },
+    [setControls]
+  )
+
+  /* Remove a control */
+  const removeControl = useCallback(
+    function (name: string) {
+      setControls(function (previousControls) {
+        return remove([...previousControls], (c) => c.name !== name)
       })
     },
     [setControls]
@@ -60,6 +71,7 @@ function FormProvider({ onSubmit, initialValue, children }) {
       value={{
         path: '',
         initialValue,
+        removeControl,
         handleSubmit,
         setControl,
         formData,

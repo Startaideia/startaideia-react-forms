@@ -56,6 +56,9 @@ export default function (name: string, { initialValue = '' } = {}) {
     function () {
       const defaultValue = get(params.initialValue, path, initialValue)
       params.setControl({ name, path, value: defaultValue })
+      return function () {
+        params.removeControl(name)
+      }
     },
     [params.setControl]
   )
