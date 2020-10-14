@@ -1,5 +1,6 @@
 import * as rules from '../../rules'
 
+import validator from 'validator'
 import set from 'lodash/set'
 import get from 'lodash/get'
 
@@ -15,10 +16,7 @@ const rulesProvider = {
    *
    */
   get: async function (name: string) {
-    return (
-      get(this.rules, name, false) ||
-      (await import(`validator/lib/${name}`)).default
-    )
+    return get(this.rules, name, false) || validator[name]
   },
 
   /**
