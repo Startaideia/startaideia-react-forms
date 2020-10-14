@@ -20,3 +20,6 @@ export { Form } from './web'
 
 /* Web Themes */
 export { parseClassName } from './web'
+
+/* Context */
+export { FormContext } from './packages/core'
