@@ -4,7 +4,7 @@ import Text from '../Text'
 function format(str) {
   return (
     'R$ ' +
-    (parseInt(str.replace(/[\D]+/g, '')) / 100)
+    (parseInt(str.toString().replace(/[\D]+/g, '')) / 100)
       .toFixed(2)
       .replace('.', ',')
       .replace(/(\d)(?=(\d{3})+,)/g, '$1.')

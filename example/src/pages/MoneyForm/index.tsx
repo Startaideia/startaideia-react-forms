@@ -4,7 +4,7 @@ import { Submit, Form, Input } from '@startaideia/react-forms'
 
 function MoneyForm() {
   return (
-    <Form>
+    <Form initialValue={{ money: 12 }}>
       <Input.Money name='money' label='Dinheiro' isRequired />
       <Form.Footer>
         <Submit>Enviar</Submit>

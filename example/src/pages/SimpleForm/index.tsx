@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import { Form, Input, Shape, Submit } from '@startaideia/react-forms'
 import { FaUser } from 'react-icons/fa'
 
 function SimpleForm() {
-  const [show, setShow] = useState(true)
-
-  useEffect(function () {
-    setTimeout(function () {
-      setShow(false)
-    }, 5000)
-  }, [])
   return (
     <React.Fragment>
       <Form theme='dark' onSubmit={(data) => console.log(data)}>
@@ -23,7 +16,7 @@ function SimpleForm() {
           prepend={<FaUser />}
         />
 
-        {show && <Input.Cpf />}
+        <Input.Cpf />
 
         <Input.Hidden name='hidden' initialValue={2} />
 

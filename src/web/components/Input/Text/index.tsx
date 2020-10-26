@@ -40,24 +40,29 @@ function Text({
     [focus, touched, invalid, valid]
   )
 
+  /* Handle mask */
+  const handleMask = useCallback(
+    function (value) {
+      if (mask) {
+        if (typeof mask === 'string') {
+          return applyMask(mask, value)
+        } else {
+          return mask(value)
+        }
+      }
+      return value
+    },
+    [mask]
+  )
+
   /**
    * Handle input change
    *
    */
   const handleChange = useCallback(
     function (e) {
-      let inputValue = e.target.value
-
-      if (mask) {
-        if (typeof mask === 'string') {
-          inputValue = applyMask(mask, e.target.value)
-        } else {
-          inputValue = mask(e.target.value)
-        }
-      }
-
-      setValue(inputValue)
-      if (onChange) onChange(inputValue)
+      setValue(e.target.value)
+      if (onChange) onChange(e.target.value)
     },
     [setValue]
   )
@@ -102,7 +107,7 @@ function Text({
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            value={value}
+            value={handleMask(value || '')}
             type={type}
             {...props}
           />
