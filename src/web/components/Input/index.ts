@@ -1,5 +1,6 @@
 export { default as Password } from './Password'
 export { default as Hidden } from './Hidden'
+export { default as Money } from './Money'
 export { default as Email } from './Email'
 export { default as Text } from './Text'
 export { default as Date } from './Date'

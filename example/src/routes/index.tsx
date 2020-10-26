@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
 
 import { Container, Aside, Main, List } from './styles'
-import { SimpleForm, EditorForm, SelectForm, DateForm } from '../pages'
+import { SimpleForm, EditorForm, SelectForm, DateForm, MoneyForm } from '../pages'
 import GroupForm from '../pages/GroupForm'
 
 function Routes() {
@@ -27,15 +27,17 @@ function Routes() {
           </List.Item>
           <List.Item onClick={handleNavigate('/grupos')}>Grupos</List.Item>
           <List.Item onClick={handleNavigate('/datas')}>Datas</List.Item>
+          <List.Item onClick={handleNavigate('/dinheiro')}>Dinheiro</List.Item>
         </List>
       </Aside>
       <Main>
         <Switch>
-          <Route path='/' component={SimpleForm} exact />
-          <Route path='/editores' component={EditorForm} exact />
           <Route path='/seletores' component={SelectForm} exact />
+          <Route path='/editores' component={EditorForm} exact />
+          <Route path='/dinheiro' component={MoneyForm} exact />
           <Route path='/grupos' component={GroupForm} exact />
           <Route path='/datas' component={DateForm} exact />
+          <Route path='/' component={SimpleForm} exact />
         </Switch>
       </Main>
     </Container>

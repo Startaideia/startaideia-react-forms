@@ -46,7 +46,16 @@ function Text({
    */
   const handleChange = useCallback(
     function (e) {
-      const inputValue = mask ? applyMask(mask, e.target.value) : e.target.value
+      let inputValue = e.target.value
+
+      if (mask) {
+        if (typeof mask === 'string') {
+          inputValue = applyMask(mask, e.target.value)
+        } else {
+          inputValue = mask(e.target.value)
+        }
+      }
+
       setValue(inputValue)
       if (onChange) onChange(inputValue)
     },

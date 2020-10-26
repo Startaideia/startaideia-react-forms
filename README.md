@@ -38,7 +38,7 @@
   - [x] Cep
   - [ ] Endereço
   - [x] Switch
-  - [ ] Dinheiro
+  - [x] Dinheiro
   - [x] Senha
   - [ ] Avaliação
   - [x] Grupo de seleção
