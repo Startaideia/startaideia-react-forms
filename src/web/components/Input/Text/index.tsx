@@ -61,8 +61,8 @@ function Text({
    */
   const handleChange = useCallback(
     function (e) {
-      setValue(e.target.value)
-      if (onChange) onChange(e.target.value)
+      setValue(handleMask(e.target.value))
+      if (onChange) onChange(handleMask(e.target.value))
     },
     [setValue]
   )
