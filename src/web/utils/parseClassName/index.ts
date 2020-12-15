@@ -4,10 +4,15 @@ export default function ({
   invalid = undefined,
   append = undefined,
   focus = undefined,
+  value = undefined,
   valid = undefined,
   prefix = ''
 }: any) {
   const classNames = [prefix]
+
+  if (value) {
+    classNames.push('dirty')
+  }
 
   if (append) {
     classNames.push('append')

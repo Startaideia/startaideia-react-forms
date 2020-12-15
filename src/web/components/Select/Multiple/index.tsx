@@ -126,7 +126,9 @@ function Multiple({
       <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
         <div className={`stf-form-group ${className}`} ref={inputRef}>
           {label && (
-            <label className={`stf-form-label ${className}`}>{label}</label>
+            <label htmlFor={name} className={`stf-form-label ${className}`}>
+              {label}
+            </label>
           )}
           <div className='stf-flex'>
             {prepend && <div className='stf-form-addon prepend'>{prepend}</div>}
@@ -135,6 +137,7 @@ function Multiple({
               className={`stf-form-control ${className}`}
               onFocus={handleFocus}
               onBlur={handleBlur}
+              id={name}
               value={inputValue}
             />
             {append && <div className='stf-form-addon  append'>{append}</div>}

@@ -36,8 +36,17 @@ function Text({
 
   /* Input class name */
   const className = useMemo(
-    () => parseClassName({ valid, focus, touched, invalid, append, prepend }),
-    [focus, touched, invalid, valid]
+    () =>
+      parseClassName({
+        valid,
+        value,
+        focus,
+        touched,
+        invalid,
+        append,
+        prepend
+      }),
+    [focus, value, touched, invalid, valid]
   )
 
   /* Handle mask */
@@ -96,7 +105,9 @@ function Text({
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
       <div className={`stf-form-group ${className}`}>
         {label && (
-          <label className={`stf-form-label ${className}`}>{label}</label>
+          <label htmlFor={name} className={`stf-form-label ${className}`}>
+            {label}
+          </label>
         )}
         <div className='stf-flex'>
           {prepend && <div className='stf-form-addon prepend'>{prepend}</div>}
@@ -109,6 +120,7 @@ function Text({
             onBlur={handleBlur}
             value={handleMask(value || '')}
             type={type}
+            id={name}
             {...props}
           />
           {append && <div className='stf-form-addon  append'>{append}</div>}

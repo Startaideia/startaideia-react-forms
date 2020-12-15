@@ -20,8 +20,8 @@ function Hidden({
 
   /* Input class name */
   const className = useMemo(
-    () => parseClassName({ valid, focus, touched, invalid }),
-    [focus, touched, invalid, valid]
+    () => parseClassName({ value, valid, focus, touched, invalid }),
+    [focus, value, touched, invalid, valid]
   )
 
   /**

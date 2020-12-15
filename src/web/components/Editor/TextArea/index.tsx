@@ -84,7 +84,9 @@ function TextArea({
     <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
       <div className={`stf-form-group ${className}`}>
         {label && (
-          <label className={`stf-form-label ${className}`}>{label}</label>
+          <label htmlFor={name} className={`stf-form-label ${className}`}>
+            {label}
+          </label>
         )}
         {touched && invalid && (
           <span className={`stf-form-text stf-text-invalid ${className}`}>
@@ -103,6 +105,7 @@ function TextArea({
           onFocus={handleFocus}
           onBlur={handleBlur}
           value={value}
+          id={name}
           {...props}
         >
           {value}
