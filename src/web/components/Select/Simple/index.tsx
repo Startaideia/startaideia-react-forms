@@ -38,6 +38,7 @@ function Simple({
     () =>
       parseClassName({
         valid,
+        value,
         focus,
         touched,
         invalid,

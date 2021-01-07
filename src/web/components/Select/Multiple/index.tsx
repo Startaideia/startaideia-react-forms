@@ -40,6 +40,7 @@ function Multiple({
     () =>
       parseClassName({
         valid,
+        value,
         focus,
         touched,
         invalid,
