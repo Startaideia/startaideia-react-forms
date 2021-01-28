@@ -16,6 +16,8 @@ function SimpleForm() {
           prepend={<FaUser />}
         />
 
+        <Input.CpfCnpj />
+        <Input.Cnpj />
         <Input.Cpf />
 
         <Input.Hidden name='hidden' initialValue={2} />

@@ -1,6 +1,8 @@
+export { default as isCpfOrCnpj } from './isCpfOrCnpj'
 export { default as maxLength } from './maxLength'
 export { default as minLength } from './minLength'
 export { default as minAge } from './minAge'
 export { default as maxAge } from './maxAge'
+export { default as isCnpj } from './isCnpj'
 export { default as isAge } from './isAge'
 export { default as isCpf } from './isCpf'
